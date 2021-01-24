@@ -12,7 +12,11 @@ connectDB();
 
 // Route files
 const sheets = require('./routes/sheets');
+
 const app = express();
+
+// Body parser
+app.use(express.json);
 
 // Dev logging middleware with morgan
 if (process.env.NODE_ENV === 'development') {
