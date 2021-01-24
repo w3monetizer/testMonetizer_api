@@ -11,12 +11,12 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 // Route files
-const sheets = require('./routes/sheets');
+const sheets = require('./routes/spreadsheets');
 
 const app = express();
 
 // Body parser
-app.use(express.json);
+app.use(express.json());
 
 // Dev logging middleware with morgan
 if (process.env.NODE_ENV === 'development') {
