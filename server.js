@@ -11,7 +11,7 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 // Route files
-const sheets = require('./routes/spreadsheets');
+const spreadsheets = require('./routes/spreadsheets');
 
 const app = express();
 
@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Mount routers
-app.use('/api/v1/sheets', sheets);
+app.use('/api/v1/spreadsheets', spreadsheets);
 
 const PORT = process.env.PORT || 5000;
 
