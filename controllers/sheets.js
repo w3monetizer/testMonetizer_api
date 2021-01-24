@@ -1,3 +1,5 @@
+const Spreadsheet = require('../models/Spreadsheet')
+
 // @desc        Get all spreadsheets
 // @route       GET /api/v1/sheets
 // @access      Private
@@ -16,6 +18,7 @@ exports.getSheet = (req, res, next) => {
 // @route       POST /api/v1/sheets
 // @access      Private
 exports.createSheet = (req, res, next) => {
+  console.log(req.body);
   res.status(200).json({ success: true, msg: 'Create new spreadsheet' });  
 }
 
