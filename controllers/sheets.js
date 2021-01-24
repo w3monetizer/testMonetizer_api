@@ -2,7 +2,7 @@
 // @route       GET /api/v1/sheets
 // @access      Private
 exports.getSheets = (req, res, next) => {
-  res.status(200).json({ success: true, msg: 'Show all sheets' });
+  res.status(200).json({ success: true, msg: 'Show all sheets'});
 }
 
 // @desc        Get single spreadsheet

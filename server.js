@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const logger = require('./middleware/logger');
 
 // Route files
 const sheets = require('./routes/sheets');
@@ -8,6 +9,8 @@ const sheets = require('./routes/sheets');
 dotenv.config({ path: './config/config.env' });
 
 const app = express();
+
+app.use(logger);
 
 // Mount routers
 app.use('/api/v1/sheets', sheets);
