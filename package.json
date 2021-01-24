@@ -1,0 +1,29 @@
+{
+  "name": "colabmoney_api",
+  "version": "1.0.0",
+  "description": "Colab Monetizer backend API",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w3monetizer/colabmoney_api.git"
+  },
+  "keywords": [
+    "colab",
+    "monetization",
+    "engine"
+  ],
+  "author": "Stefan Ianta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/w3monetizer/colabmoney_api/issues"
+  },
+  "homepage": "https://github.com/w3monetizer/colabmoney_api#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
