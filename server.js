@@ -1,13 +1,16 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
-
-// Route files
-const sheets = require('./routes/sheets');
+const connectDB = require('./config/db')
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
 
+// Connect to database
+connectDB();
+
+// Route files
+const sheets = require('./routes/sheets');
 const app = express();
 
 // Dev logging middleware with morgan
