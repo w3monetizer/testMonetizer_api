@@ -7,7 +7,9 @@ exports.getSpreadsheets = async (req, res, next) => {
   try {
     const spreadsheets = await Spreadsheet.find();
 
-    res.status(200).json({ success: true, data: spreadsheets });
+    res
+      .status(200)
+      .json({ success: true, count: spreadsheets.length, data: spreadsheets });
   } catch (err) {
     res.status(400).json({ success: false }); 
   }
