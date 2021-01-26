@@ -16,8 +16,14 @@ exports.getSpreadsheets = async (req, res, next) => {
 // @desc        Get single spreadsheet
 // @route       GET /api/v1/spreadsheets/:id
 // @access      Private
-exports.getSpreadsheet = (req, res, next) => {
-  res.status(200).json({ success: true, msg: `Show spreadsheet ${req.params.id}` });
+exports.getSpreadsheet = async (req, res, next) => {
+  try {
+    const spreadsheet = await Spreadsheet.findById(req.params.id);
+
+    res.status(200).json({ success: true, data: spreadsheet });
+  } catch (err) {
+    res.status(400).json({ success: false }); 
+  }
 }
 
 // @desc        Create new spreadsheet
