@@ -5,12 +5,18 @@ const colors = require('colors');
 const bodyParser = require('body-parser');
 
 const connectDB = require('./config/db');
+const connectLocalDB = require('./config/localdb');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
 
 // Connect to database
-connectDB();
+if (process.env.NODE_ENV === 'development') {
+  connectDB();
+}
+if (process.env.NODE_ENV === 'local') {
+  connectLocalDB();
+}
 
 // Route files
 const spreadsheets = require('./routes/spreadsheets');
@@ -24,6 +30,9 @@ app.use(express.json());
 // Dev logging middleware with morgan
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
+}
+if (process.env.NODE_ENV === 'local') {
+  app.use(morgan('tiny'));
 }
 
 // Mount routers
