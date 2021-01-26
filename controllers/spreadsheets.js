@@ -49,13 +49,22 @@ exports.createSpreadsheet = async (req, res, next) => {
 // @desc        Update spreadsheet
 // @route       PUT /api/v1/spreadsheets/:id
 // @access      Private
-exports.updateSpreadsheet = (req, res, next) => {
-  res.status(200).json({ success: true, msg: `Update spreadsheet ${req.params.id}` });  
-}
+exports.updateSpreadsheet = async (req, res, next) => {
+  const spreadsheet = await Spreadsheet.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  });
+
+  if (!spreadsheet) {
+    return res.status(400).json({ success: false });
+  }
+
+  res.status(200).json({ success: true, data: spreadsheet });
+};
 
 // @desc        Delete spreadsheet
 // @route       DELETE /api/v1/spreadsheets/:id
 // @access      Private
-exports.deleteSpreadsheet = (req, res, next) => {
+exports.deleteSpreadsheet = async (req, res, next) => {
   res.status(200).json({ success: true, msg: `Delete spreadsheet ${req.params.id}` });
 }
