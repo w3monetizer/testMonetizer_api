@@ -20,6 +20,10 @@ exports.getSpreadsheet = async (req, res, next) => {
   try {
     const spreadsheet = await Spreadsheet.findById(req.params.id);
 
+    if (!spreadsheet) {
+      return res.status(400).json({ success: false })
+    }
+
     res.status(200).json({ success: true, data: spreadsheet });
   } catch (err) {
     res.status(400).json({ success: false }); 
