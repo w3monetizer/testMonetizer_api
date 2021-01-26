@@ -2,6 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
+const bodyParser = require('body-parser');
+
 const connectDB = require('./config/db');
 
 // Load env vars
@@ -16,6 +18,7 @@ const spreadsheets = require('./routes/spreadsheets');
 const app = express();
 
 // Body parser
+app.use(bodyParser({limit: '50mb'}));
 app.use(express.json());
 
 // Dev logging middleware with morgan

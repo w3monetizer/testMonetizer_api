@@ -8,11 +8,12 @@ const SpreadsheetSchema = new mongoose.Schema({
     trim: true,
     maxlength: [50, 'Name can not be more than 50 characters']
   },
-  // cells: [{
-  //   row: Number,
-  //   col: Number,
-  //   val: String
-  // }],
+  cells: [{
+    row: Number,
+    col: Number,
+    val: String
+  }],
+  base64csv: String,
   slug: String,
   description: {
     type: String,

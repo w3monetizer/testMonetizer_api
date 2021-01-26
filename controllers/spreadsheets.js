@@ -17,10 +17,18 @@ exports.getSpreadsheet = (req, res, next) => {
 // @desc        Create new spreadsheet
 // @route       POST /api/v1/spreadsheets
 // @access      Private
-exports.createSpreadsheet = (req, res, next) => {
-  console.log(req.body);
-  res.status(200).json({ success: true, msg: 'Create new spreadsheet' });  
-}
+exports.createSpreadsheet = async (req, res, next) => {
+  try {
+    const spreadsheet = await Spreadsheet.create(req.body);
+
+    res.status(201).json({
+      success: true,
+      data: spreadsheet
+    });
+  } catch (error) {
+    res.status(400).json({ success: false});
+  }
+};
 
 // @desc        Update spreadsheet
 // @route       PUT /api/v1/spreadsheets/:id
