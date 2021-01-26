@@ -50,21 +50,35 @@ exports.createSpreadsheet = async (req, res, next) => {
 // @route       PUT /api/v1/spreadsheets/:id
 // @access      Private
 exports.updateSpreadsheet = async (req, res, next) => {
-  const spreadsheet = await Spreadsheet.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true
-  });
+  try {
+    const spreadsheet = await Spreadsheet.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true
+    });
 
-  if (!spreadsheet) {
-    return res.status(400).json({ success: false });
+    if (!spreadsheet) {
+      return res.status(400).json({ success: false });
+    }
+
+    res.status(200).json({ success: true, data: spreadsheet });
+  } catch (err) {
+    res.status(400).json({ success: false });
   }
-
-  res.status(200).json({ success: true, data: spreadsheet });
 };
 
 // @desc        Delete spreadsheet
 // @route       DELETE /api/v1/spreadsheets/:id
 // @access      Private
 exports.deleteSpreadsheet = async (req, res, next) => {
-  res.status(200).json({ success: true, msg: `Delete spreadsheet ${req.params.id}` });
+  try {
+    const spreadsheet = await Spreadsheet.findByIdAndDelete(req.params.id);
+
+    if (!spreadsheet) {
+      return res.status(400).json({ success: false });
+    }
+
+    res.status(200).json({ success: true, data: {} });
+  } catch (err) {
+    res.status(400).json({ success: false });
+  }
 }
