@@ -3,8 +3,14 @@ const Spreadsheet = require('../models/Spreadsheet');
 // @desc        Get all spreadsheets
 // @route       GET /api/v1/spreadsheets
 // @access      Private
-exports.getSpreadsheets = (req, res, next) => {
-  res.status(200).json({ success: true, msg: 'Show all sheets'});
+exports.getSpreadsheets = async (req, res, next) => {
+  try {
+    const spreadsheets = await Spreadsheet.find();
+
+    res.status(200).json({ success: true, data: spreadsheets });
+  } catch (err) {
+    res.status(400).json({ success: false }); 
+  }
 }
 
 // @desc        Get single spreadsheet
