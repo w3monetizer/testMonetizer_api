@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 if (process.env.NODE_ENV === 'local') {
-  app.use(morgan('tiny'));
+  app.use(morgan('dev'));
 }
 
 // Mount routers
