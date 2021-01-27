@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const SpreadsheetSchema = new mongoose.Schema({
   name: {
