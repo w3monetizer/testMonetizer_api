@@ -106,4 +106,10 @@ const SpreadsheetSchema = new mongoose.Schema({
   },
 });
 
+// Create spreadsheet slug from the name
+SpreadsheetSchema.pre('save', function (next) {
+  this.slug = slugify(this.name, { lower: true})
+  next();
+});
+
 module.exports = mongoose.model('Spreadsheet', SpreadsheetSchema);
