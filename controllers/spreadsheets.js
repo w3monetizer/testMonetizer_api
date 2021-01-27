@@ -24,7 +24,9 @@ exports.getSpreadsheet = async (req, res, next) => {
     const spreadsheet = await Spreadsheet.findById(req.params.id);
 
     if (!spreadsheet) {
-      return res.status(400).json({ success: false })
+      return next(
+        new ErrorResponse(`Spreadsheet not found with id of ${req.params.id}`, 404)
+      );
     }
 
     res.status(200).json({ success: true, data: spreadsheet });
