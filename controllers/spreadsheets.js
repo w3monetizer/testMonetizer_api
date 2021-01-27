@@ -47,7 +47,7 @@ exports.createSpreadsheet = async (req, res, next) => {
       success: true,
       data: spreadsheet
     });
-  } catch (error) {
+  } catch (err) {
     next(err);
   }
 };
