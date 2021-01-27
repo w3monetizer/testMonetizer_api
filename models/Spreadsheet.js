@@ -17,6 +17,7 @@ const SpreadsheetSchema = new mongoose.Schema({
   slug: String,
   description: {
     type: String,
+    required: [true, 'Please add a description < 500 characters'],
     maxlength: [500, 'Description can not be more than 500 characters']
   },
   website: {
@@ -39,7 +40,7 @@ const SpreadsheetSchema = new mongoose.Schema({
   },
   address: {
     type: String,
-    required: [false, 'Please add an address']
+    required: [true, 'Please add an address']
   },
   location: {
     // GeoJSON Point
