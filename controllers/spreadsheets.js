@@ -1,3 +1,4 @@
+const ErrorResponse = require('../utils/errorResponse');
 const Spreadsheet = require('../models/Spreadsheet');
 
 // @desc        Get all spreadsheets
@@ -28,8 +29,7 @@ exports.getSpreadsheet = async (req, res, next) => {
 
     res.status(200).json({ success: true, data: spreadsheet });
   } catch (err) {
-    // res.status(400).json({ success: false }); 
-    next(err);
+    next(new ErrorResponse(`Spreadsheet not found with id of ${req.params.id}`, 404));
   }
 }
 
