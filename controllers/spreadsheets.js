@@ -12,7 +12,7 @@ exports.getSpreadsheets = async (req, res, next) => {
       .status(200)
       .json({ success: true, count: spreadsheets.length, data: spreadsheets });
   } catch (err) {
-    res.status(400).json({ success: false }); 
+    next(err);
   }
 }
 
@@ -24,6 +24,7 @@ exports.getSpreadsheet = async (req, res, next) => {
     const spreadsheet = await Spreadsheet.findById(req.params.id);
 
     if (!spreadsheet) {
+      // Mongo formatted object id not in the database
       return next(
         new ErrorResponse(`Spreadsheet not found with id of ${req.params.id}`, 404)
       );
@@ -31,7 +32,7 @@ exports.getSpreadsheet = async (req, res, next) => {
 
     res.status(200).json({ success: true, data: spreadsheet });
   } catch (err) {
-    next(new ErrorResponse(`Spreadsheet not found with id of ${req.params.id}`, 404));
+    next(err);
   }
 }
 
@@ -47,7 +48,7 @@ exports.createSpreadsheet = async (req, res, next) => {
       data: spreadsheet
     });
   } catch (error) {
-    res.status(400).json({ success: false});
+    next(err);
   }
 };
 
@@ -67,7 +68,7 @@ exports.updateSpreadsheet = async (req, res, next) => {
 
     res.status(200).json({ success: true, data: spreadsheet });
   } catch (err) {
-    res.status(400).json({ success: false });
+    next(err);
   }
 };
 
@@ -84,6 +85,6 @@ exports.deleteSpreadsheet = async (req, res, next) => {
 
     res.status(200).json({ success: true, data: {} });
   } catch (err) {
-    res.status(400).json({ success: false });
+    next(err);
   }
 }
