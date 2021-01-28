@@ -25,7 +25,7 @@ var rows = [];
 readCSV = async () => {
   try {
     // csvStr = await csv().fromFile(`${__dirname}/_data/test.csv`);
-    csvStr = fs.readFileSync(`${__dirname}/_data/test.csv`, 'utf-8');
+    csvStr = fs.readFileSync(`${__dirname}/_data/AICamper-Sheet1.csv`, 'utf-8');
     console.log('- csvStr from file: ', csvStr);
     await csv({
       noheader:true,
@@ -53,7 +53,7 @@ const importData = async () => {
     await readCSV();
     console.log('- rows before insert:\n', rows);
     await Spreadsheet.create({
-      name: 'test',
+      name: 'AICamper-Sheet1',
       address: '679 Old Coach Road, Salt Springs, Nova Scotia, Canada',
       rows: rows
     });
