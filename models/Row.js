@@ -3,7 +3,7 @@ const CellSchema = require('./Cell');
 const Schema = mongoose.Schema;
 
 const RowSchema = new Schema({
-  cells: [CellSchema]
+  cells: [{val: String}]
 });
 
 module.exports = RowSchema;

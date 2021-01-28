@@ -19,22 +19,25 @@ mongoose.connect(process.env.LOCAL_MONGO_URI, {
     useFindAndModify: false,
     useUnifiedTopology: true
 });
-  
-// Setup CSV converter
-const converter = csv({
-  noheader: true,
-  trim: true,
-});
 
-let rows = [[ '1', '2', '3' ], ['7', '8', '9' ]];
+var rows = [];
 // Read CSV files into JSON using NPM csvtojson //
 readCSV = async () => {
   try {
     // csvStr = await csv().fromFile(`${__dirname}/_data/test.csv`);
-    csvStr = await fs.readFileSync(`${__dirname}/_data/test.csv`, 'utf-8');
-    rows = await csv().fromString(csvStr);
+    csvStr = fs.readFileSync(`${__dirname}/_data/test.csv`, 'utf-8');
+    console.log('- csvStr from file: ', csvStr);
+    await csv({
+      noheader:true,
+      output: "csv"
+    })
+      .fromString(csvStr)
+      .then((csvRows) => {
+        console.log('- csvRows from csvStr', csvRows);
+        rows = JSON.parse(JSON.stringify(csvRows));
+      });
     console.log('CSV file Read...'.green.inverse);
-    console.log('- rows: ', rows);
+    console.log('- rows after Read:\n', rows);
   } catch (err) {
     console.error(err);
   }
@@ -47,7 +50,8 @@ readCSV = async () => {
 // Import into DB //
 const importData = async () => {
   try {
-    console.log('- rows: ', rows);
+    await readCSV();
+    console.log('- rows before insert:\n', rows);
     await Spreadsheet.create({
       name: 'test',
       address: '679 Old Coach Road, Salt Springs, Nova Scotia, Canada',
