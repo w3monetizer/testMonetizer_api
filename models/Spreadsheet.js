@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 const geocoder = require('../utils/geocoder');
+const RowSchema = require('./Row');
 
 const SpreadsheetSchema = new mongoose.Schema({
   name: {
@@ -10,10 +11,7 @@ const SpreadsheetSchema = new mongoose.Schema({
     trim: true,
     maxlength: [50, 'Name can not be more than 50 characters']
   },
-  rcArray: [{
-    col: String,
-    val: String
-  }],
+  rows: [RowSchema],
   cells: [{
     row: Number,
     col: Number,
