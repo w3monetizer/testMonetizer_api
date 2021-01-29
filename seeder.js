@@ -31,7 +31,7 @@ var rows = [];
 readCSV = async () => {
   try {
     // csvStr = await csv().fromFile(`${__dirname}/_data/test.csv`);
-    csvStr = fs.readFileSync(`${__dirname}/_data/AICamper-Sheet1.csv`, 'utf-8');
+    csvStr = fs.readFileSync(`${__dirname}/_ctxt/csv/${csvFiles[0]}`, 'utf-8');
     console.log('- csvStr from file: ', csvStr);
     await csv({
       noheader:true,
@@ -59,8 +59,8 @@ const importData = async () => {
     await readCSV();
     console.log('- rows before insert:\n', rows);
     await Spreadsheet.create({
-      name: 'AICamper-Sheet1',
-      address: '679 Old Coach Road, Salt Springs, Nova Scotia, Canada',
+      name: `${csvFiles[0]}`,
+      address: '2215 W River Station Rd, Salt Springs, NS B0K 1P0, Canada',
       rows: rows
     });
     // await Course.create(courses);
