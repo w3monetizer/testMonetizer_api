@@ -25,60 +25,64 @@ const csvFiles = [];
 fs.readdirSync(process.env.CSV_DIR).forEach(file => {
   csvFiles.push(file);
 });
+console.log('CSV Files in CSV_DIR:')
+console.log(csvFiles);
 
 var rows = [];
-// Read CSV files into JSON using NPM csvtojson //
-readCSV = async () => {
+// Read CSV file into JSON using NPM csvtojson //
+readCSV = async (csvFile) => {
+  rows = [];
   try {
-    // csvStr = await csv().fromFile(`${__dirname}/_data/test.csv`);
-    csvStr = fs.readFileSync(`${__dirname}/_ctxt/csv/${csvFiles[0]}`, 'utf-8');
-    console.log('- csvStr from file: ', csvStr);
+    csvStr = fs.readFileSync(`${__dirname}/_ctxt/csv/${csvFile}`, 'utf-8');
+    // console.log('- csvStr from file: ', csvStr);
     await csv({
       noheader:true,
       output: "csv"
     })
       .fromString(csvStr)
       .then((csvRows) => {
-        console.log('- csvRows from csvStr', csvRows);
+        // console.log('- csvRows from csvStr', csvRows);
         rows = JSON.parse(JSON.stringify(csvRows));
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    console.log('CSV file Read...'.green.inverse);
-    console.log('- rows after Read:\n', rows);
+    console.log(csvFile, 'read...'.green.inverse);
+    // console.log('- rows after Read:\n', rows);
   } catch (err) {
     console.error(err);
   }
 }
 
-// const spreadsheet = JSON.parse(fs.readFileSync(`${__dirname}/_data/spreadsheets.json`, 'utf-8'));
-// const courses = JSON.parse(fs.readFileSync(`${__dirname}/_data/courses.json`, 'utf-8'));
-// const users = JSON.parse(fs.readFileSync(`${__dirname}/_data/users.json`, 'utf-8'));
-
 // Import into DB //
-const importData = async () => {
+const importData = async (csvFile) => {
   try {
-    await readCSV();
-    console.log('- rows before insert:\n', rows);
+    await readCSV(csvFile);
     await Spreadsheet.create({
-      name: `${csvFiles[0]}`,
+      name: csvFile,
       address: '2215 W River Station Rd, Salt Springs, NS B0K 1P0, Canada',
       rows: rows
     });
-    // await Course.create(courses);
-    // await User.create(users);
 
-    console.log('Data Imported...'.green.inverse);
-    process.exit();
+    console.log(csvFile, 'imported'.green.inverse);
+    // process.exit();
   } catch (err) {
     console.error(err);
   }
+}
+
+const importCSVs = async () => {
+  for (let i = 0; i < csvFiles.length; i++) {
+    console.log('Importing: ', csvFiles[i]);
+    await importData(csvFiles[i]);
+  }
+  process.exit();
 }
 
 // Delete data //
 const deleteData = async () => {
   try {
     await Spreadsheet.deleteMany();
-    // await Course.deleteMany();
-    // await User.deleteMany();
 
     console.log('Data Destroyed...'.red.inverse);
     process.exit();
@@ -89,7 +93,7 @@ const deleteData = async () => {
 
 // Command args: $ node seeder -i = import or -d = delete // 
 if (process.argv[2] === '-i') { // import data //
-  importData();
+  importCSVs();
 } else if (process.argv[2] === '-d') {  // delete data //
   deleteData();
 } else if (process.argv[2] === '-l') {  // list csv files to import //
