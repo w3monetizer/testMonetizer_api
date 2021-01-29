@@ -20,6 +20,12 @@ mongoose.connect(process.env.LOCAL_MONGO_URI, {
     useUnifiedTopology: true
 });
 
+// Prep the list of CSV files to load in the Spreadsheets collection //
+const csvFiles = [];
+fs.readdirSync(process.env.CSV_DIR).forEach(file => {
+  csvFiles.push(file);
+});
+
 var rows = [];
 // Read CSV files into JSON using NPM csvtojson //
 readCSV = async () => {
@@ -83,8 +89,11 @@ const deleteData = async () => {
 
 // Command args: $ node seeder -i = import or -d = delete // 
 if (process.argv[2] === '-i') { // import data //
-  // readCSV();
   importData();
 } else if (process.argv[2] === '-d') {  // delete data //
   deleteData();
+} else if (process.argv[2] === '-l') {  // list csv files to import //
+  console.log('- csvFiles to import from ', process.env.CSV_DIR, ' :');
+  console.log(csvFiles);
+  process.exit();
 }
