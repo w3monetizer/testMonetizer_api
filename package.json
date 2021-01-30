@@ -1,5 +1,5 @@
 {
-  "name": "colabmoney_api",
+  "name": "coMonetizer_api",
   "version": "1.0.0",
   "description": "Colab Monetizer backend API",
   "main": "server.js",
