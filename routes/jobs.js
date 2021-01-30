@@ -10,10 +10,10 @@ const {
 } = require('../controllers/jobs');
 
 const Job = require('../models/Job');
-const advancedResults = require('../middleware/advancedResults');
+// const advancedResults = require('../middleware/advancedResults');
 
 // Include other resource routers //
-// const courseRouter = require('./courses');
+// const skillRouter = require('./skills');
 
 const router = express.Router();
 
@@ -21,21 +21,25 @@ const router = express.Router();
 // const { protect, authorize } = require('../middleware/auth');
 
 // Re-route into other resource routers //
-router.use('/:jobId/courses', courseRouter);
+// router.use('/:jobId/skills', skillRouter);
 
 router.route('/radius/:zipcode/:distance').get(getJobsInRadius);
 
-router.route('/:id/photo').put(protect, authorize('publisher', 'admin'), jobPhotoUpload);
+// router.route('/:id/photo').put(protect, authorize('publisher', 'admin'), jobPhotoUpload);
 
 router
   .route('/')
-  .get(advancedResults(Job, 'courses'), getJobs)
-  .post(protect, authorize('publisher', 'admin'), createJob);
+  .get(getJobs)
+  .post(createJob)
+//  .get(advancedResults(Job, 'skills'), getJobs)
+//  .post(protect, authorize('publisher', 'admin'), createJob);
 
 router
   .route('/:id')
   .get(getJob)
-  .put(protect, authorize('publisher', 'admin'), updateJob)
-  .delete(protect, authorize('publisher', 'admin'), deleteJob);
+  .put(updateJob)
+  .delete(deleteJob)
+  // .put(protect, authorize('publisher', 'admin'), updateJob)
+  // .delete(protect, authorize('publisher', 'admin'), deleteJob);
 
 module.exports = router;

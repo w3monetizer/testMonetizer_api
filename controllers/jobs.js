@@ -8,7 +8,11 @@ const Job = require('../models/Job');
 // @route     GET /api/v1/jobs
 // @access    Public
 exports.getJobs = asyncHandler(async (req, res, next) => { 
-  res.status(200).json(res.advancedResults);
+//  res.status(200).json(res.advancedResults);
+  const jobs = await Job.find();
+
+  res.status(200)
+    .json({ success: true, count: jobs.length, data: jobs });
 });
 
 // @desc      Get single job
