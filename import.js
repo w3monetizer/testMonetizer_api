@@ -100,4 +100,7 @@ if (process.argv[2] === '-csv') { // import data //
   console.log('- csvFiles to import from ', process.env.CSV_DIR, ' :');
   console.log(csvFiles);
   process.exit();
+} else {
+  console.log('// Command args: $ node import -csv, -l list, -d delete');
+  process.exit();
 }
