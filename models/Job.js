@@ -2,21 +2,19 @@ const mongoose = require('mongoose');
 const slugify = require('slugify');
 const geocoder = require('../utils/geocoder');
 
-const SpreadsheetSchema = new mongoose.Schema({
+const JobSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Please add a name'],
     unique: true,
     trim: true,
-    maxlength: [50, 'Name can not be more than 50 characters']
+    maxlenght: [50, 'Name can not be more than 50 characters']
   },
-  rows: [[{type: String}]],
-  base64csv: String,
-  slug: String,
+  slug: String, // Url friendly version of the name - with slugify
   description: {
     type: String,
-    required: [false, 'Please add a description'],
-    maxlength: [500, 'Description can not be more than 500 characters']
+    required: [true, 'Please add a description'],
+    maxlenght: [500, 'Description can not be more than 500 characters']
   },
   website: {
     type: String,
@@ -38,7 +36,7 @@ const SpreadsheetSchema = new mongoose.Schema({
   },
   address: {
     type: String,
-    required: [false, 'Please add an address']
+    required: [true, 'Please add an address']
   },
   location: {
     // GeoJSON Point
@@ -60,14 +58,13 @@ const SpreadsheetSchema = new mongoose.Schema({
   careers: {
     // Array of strings
     type: [String],
-    required: false,
+    required: true,
     enum: [
       'Web Development',
       'Mobile Development',
       'UI/UX',
       'Data Science',
       'Business',
-      'Cloud',
       'Other'
     ]
   },
@@ -101,16 +98,24 @@ const SpreadsheetSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: true
+  }
+}, {  // Enable virtuals / reverse populate / related data extracted from other collections //
+    toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
 
-// Create spreadsheet slug from the name
-SpreadsheetSchema.pre('save', function (next) {
-  this.slug = slugify(this.name, { lower: true})
+// Create job slug from the name
+JobSchema.pre('save', function(next) {  // use function() required for this to refer to the doc, eg: this.slug
+  this.slug = slugify(this.name, { lower: true });
   next();
 });
 
-// Geocode & create location field - using geocoder Promise format
-SpreadsheetSchema.pre('save', async function (next) {
+// Geocode & create location field
+JobSchema.pre('save', async function (next) {  // this refers to the document / db record 
   const loc = await geocoder.geocode(this.address);
   this.location = {
     type: 'Point',
@@ -121,11 +126,26 @@ SpreadsheetSchema.pre('save', async function (next) {
     state: loc[0].stateCode,
     zipcode: loc[0].zipcode,
     country: loc[0].countryCode
-  }
+  };
 
   // Do not save address in DB
   this.address = undefined;
   next();
 });
 
-module.exports = mongoose.model('Spreadsheet', SpreadsheetSchema);
+// Cascade delete skills when a job is deleted // 
+JobSchema.pre('remove', async function (next) {
+  console.log(`Skills being removed from job ${this._id}`);
+  await this.model('Skill').deleteMany({ job: this._id });
+  next();
+});
+
+// Reverse populate with virtuals //
+JobSchema.virtual('skills', {
+  ref: 'Skill',
+  localField: '_id',
+  foreignField: 'job',
+  justOne: false    // to get the array of skills for the job //
+});
+
+module.exports = mongoose.model('Job', JobSchema);
