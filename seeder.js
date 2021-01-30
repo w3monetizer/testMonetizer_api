@@ -42,8 +42,8 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await Job.deleteMany();
-    await Skill.deleteMany();
-    await User.deleteMany();
+    // await Skill.deleteMany();
+    // await User.deleteMany();
 
     console.log('Data Destroyed...'.red.inverse);
     process.exit();
