@@ -91,8 +91,8 @@ const deleteData = async () => {
   }
 }
 
-// Command args: $ node seeder -i = import or -d = delete // 
-if (process.argv[2] === '-i') { // import data //
+// Command args: $ node import -csv, -l list, -d delete // 
+if (process.argv[2] === '-csv') { // import data //
   importCSVs();
 } else if (process.argv[2] === '-d') {  // delete data //
   deleteData();
