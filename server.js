@@ -26,7 +26,8 @@ const jobs = require('./routes/jobs');
 const app = express();
 
 // Body parser
-app.use(bodyParser({limit: '50mb'}));
+// app.use(bodyParser({limit: '50mb'}));
+app.use(express.urlencoded({extended: true}));  // to allow large base64 blobs //
 app.use(express.json());
 
 // Dev logging middleware with morgan
