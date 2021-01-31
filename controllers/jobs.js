@@ -8,8 +8,16 @@ const Job = require('../models/Job');
 // @route     GET /api/v1/jobs
 // @access    Public
 exports.getJobs = asyncHandler(async (req, res, next) => { 
-//  res.status(200).json(res.advancedResults);
-  const jobs = await Job.find();
+  //  res.status(200).json(res.advancedResults);
+  let query;
+
+  let queryStr = JSON.stringify(req.query);
+
+  queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
+
+  query = Job.find(JSON.parse(queryStr));
+
+  const jobs = await query;
 
   res.status(200)
     .json({ success: true, count: jobs.length, data: jobs });
