@@ -8,7 +8,7 @@ dotenv.config({ path: './config/config.env' });
 
 // Load models //
 const Job = require('./models/Job');
-// const Skill = require('./models/Skill');
+const Skill = require('./models/Skill');
 // const User = require('./models/User');
 
 // Connect to DB //
@@ -21,14 +21,14 @@ mongoose.connect(process.env.LOCAL_MONGO_URI, {
   
 // Read JSON files //
 const jobs = JSON.parse(fs.readFileSync(`${__dirname}/_data/jobs.json`, 'utf-8'));
-// const skills = JSON.parse(fs.readFileSync(`${__dirname}/_data/skills.json`, 'utf-8'));
+const skills = JSON.parse(fs.readFileSync(`${__dirname}/_data/skills.json`, 'utf-8'));
 // const users = JSON.parse(fs.readFileSync(`${__dirname}/_data/users.json`, 'utf-8'));
 
 // Import into DB //
 const importData = async () => {
   try {
     await Job.create(jobs);
-    // await Course.create(skills);
+    await Skill.create(skills);
     // await User.create(users);
 
     console.log('Data Imported...'.green.inverse);
@@ -42,7 +42,7 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await Job.deleteMany();
-    // await Skill.deleteMany();
+    await Skill.deleteMany();
     // await User.deleteMany();
 
     console.log('Data Destroyed...'.red.inverse);
