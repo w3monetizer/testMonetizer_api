@@ -13,7 +13,7 @@ const Job = require('../models/Job');
 // const advancedResults = require('../middleware/advancedResults');
 
 // Include other resource routers //
-// const skillRouter = require('./skills');
+const skillRouter = require('./skills');
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ const router = express.Router();
 // const { protect, authorize } = require('../middleware/auth');
 
 // Re-route into other resource routers //
-// router.use('/:jobId/skills', skillRouter);
+router.use('/:jobId/skills', skillRouter);
 
 router.route('/radius/:zipcode/:distance').get(getJobsInRadius);
 

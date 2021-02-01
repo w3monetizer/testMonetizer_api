@@ -22,6 +22,7 @@ if (process.env.NODE_ENV === 'local') {
 // Route files
 const spreadsheets = require('./routes/spreadsheets');
 const jobs = require('./routes/jobs');
+const skills = require('./routes/skills');
 
 const app = express();
 
@@ -41,6 +42,7 @@ if (process.env.NODE_ENV === 'local') {
 // Mount routers
 app.use('/api/v1/spreadsheets', spreadsheets);
 app.use('/api/v1/jobs', jobs);
+app.use('/api/v1/skills', skills);
 
 // Middlewares
 app.use(errorHandler);

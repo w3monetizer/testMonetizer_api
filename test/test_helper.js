@@ -5,7 +5,7 @@ mongoose.connect('mongodb://192.168.254.121:27017/users_test', {
   useUnifiedTopology: true
 });
 mongoose.connection
-  .once('open', () => console.log('Good to go!'))
+  .once('open', () => console.log('Local LAN Mongo Connected'))
   .on('error', (error) => {
     console.warn('Warning', error);
   });
