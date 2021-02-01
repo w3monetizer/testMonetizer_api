@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://192.168.254.121:27017/users_test', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
-mongoose.connection
-  .once('open', () => console.log('Local LAN Mongo Connected'))
-  .on('error', (error) => {
-    console.warn('Warning', error);
+// before() is executed once before all tests //
+before((done) => {
+  mongoose.connect('mongodb://192.168.254.121:27017/users_test', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
   });
+  mongoose.connection
+    .once('open', () => { done(); })
+    .on('error', (error) => {
+      console.warn('Warning', error);
+    });
+});
+
 
 beforeEach((done) => {
   mongoose.connection.collections.users.drop(() => {
