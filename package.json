@@ -7,7 +7,7 @@
     "start": "NODE_ENV=production node server",
     "dev": "nodemon server",
     "local": "NODE_ENV=local nodemon server",
-    "test": "mocha --exit"
+    "test": "mocha --timeout 10000 --exit"
   },
   "repository": {
     "type": "git",
