@@ -93,3 +93,24 @@ exports.updateSkill = asyncHandler(async (req, res, next) => {
     data: skill
   });
 });
+
+// @desc      Delete skill
+// @route     DELETE /api/v1/skills/:id
+// @access    Private
+exports.deleteSkill = asyncHandler(async (req, res, next) => {
+  const skill = await Skill.findById(req.params.id);
+
+  if (!skill) {
+    return next(
+      new ErrorResponse(`No skill with the id of ${req.params.id}`),
+      404
+    );
+  }
+
+  await skill.remove();
+    
+  res.status(200).json({
+    success: true,
+    data: {}
+  });
+});
