@@ -26,8 +26,8 @@ exports.getJobs = asyncHandler(async (req, res, next) => {
   // Create operators: $gt, $gte, etc
   queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
 
-  // Finding resource
-  query = Job.find(JSON.parse(queryStr));
+  // Finding resource & populate with Virtuals array //
+  query = Job.find(JSON.parse(queryStr)).populate('skills');
 
   // Select Fields if select included //
   if (req.query.select) {
