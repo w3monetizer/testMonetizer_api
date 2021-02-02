@@ -55,7 +55,13 @@ SkillSchema.statics.getAverageCost = async function (jobId) {
     }
   ]);
 
-  console.log(obj);
+  try {
+    await this.model('Job').findByIdAndUpdate(jobId, {
+      averageCost: Math.ceil(obj[0].averageCost / 10) * 10 // use Math.ceil etc in order to get an integer
+    })
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 // Call getAverageCost after save
