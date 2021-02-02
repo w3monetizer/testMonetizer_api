@@ -1,4 +1,5 @@
 node_modules/
+platform_resources/
 _ctxt
 _data
 config/config.env
