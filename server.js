@@ -2,8 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
+const fileupload = require('express-fileupload');
 const errorHandler = require('./middleware/error');
-const bodyParser = require('body-parser');
 
 const connectDB = require('./config/db');
 const connectLocalDB = require('./config/localdb');
@@ -38,6 +38,9 @@ if (process.env.NODE_ENV === 'development') {
 if (process.env.NODE_ENV === 'local') {
   app.use(morgan('dev'));
 }
+
+// File uploading 
+app.use(fileupload());
 
 // Mount routers
 app.use('/api/v1/spreadsheets', spreadsheets);
