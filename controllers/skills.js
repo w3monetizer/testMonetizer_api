@@ -19,7 +19,7 @@ exports.getSkills = asyncHandler(async (req, res, next) => {
     });
   } else {
     // res.status(200).json(res.advancedResults);
-    query = Skill.find();
+    query = Skill.find().populate('job');
   }
 
   const skills = await query;
