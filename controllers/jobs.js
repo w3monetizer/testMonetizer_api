@@ -158,11 +158,11 @@ exports.deleteJob = asyncHandler(async (req, res, next) => {
 
   // Task: Ensure user is job Owner or Admin // 
   // Test: Test scripts reference <ref> & Test Results <ref> // 
-  if (job.user.toString() !== req.user.id && req.user.role !== 'admin') {
-    return next(
-      new ErrorResponse(`User ${req.params.id} is not authorized to delete`, 401) // not authorized
-    );
-  }
+  // if (job.user.toString() !== req.user.id && req.user.role !== 'admin') {
+  //   return next(
+  //     new ErrorResponse(`User ${req.params.id} is not authorized to delete`, 401) // not authorized
+  //   );
+  // }
 
   // Delete job - this remove will also trigger the middleware for deleting its skills //
   job.remove();

@@ -10,13 +10,7 @@ exports.getSkills = asyncHandler(async (req, res, next) => {
   let query;
 
   if (req.params.jobId) {  // Check if there is a jobId in the request
-    const skills = await Skill.find({ job: req.params.jobId });
-
-    return res.status(200).json({
-      success: true,
-      count: skills.length,
-      data: skills
-    });
+    query = Skill.find({ job: req.params.jobId })
   } else {
     // res.status(200).json(res.advancedResults);
     query = Skill.find().populate({
