@@ -28,7 +28,7 @@ const skills = JSON.parse(fs.readFileSync(`${__dirname}/_data/skills.json`, 'utf
 const importData = async () => {
   try {
     await Job.create(jobs);
-    await Skill.create(skills);
+    // await Skill.create(skills);
     // await User.create(users);
 
     console.log('Data Imported...'.green.inverse);

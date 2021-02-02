@@ -38,4 +38,19 @@ const SkillSchema = new mongoose.Schema({
   }
 });
 
+// Static method to get avg of skill/course tuitions
+SkillSchema.statics.getAverageCost = async function (jobId) {
+  
+}
+
+// Call getAverageCost after save
+SkillSchema.post('save', function () {
+  
+});
+
+// Call getAverageCost after save
+SkillSchema.pre('remove', function () {
+  
+});
+
 module.exports = mongoose.model('Skill', SkillSchema);
