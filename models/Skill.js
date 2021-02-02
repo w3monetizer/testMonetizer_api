@@ -42,6 +42,7 @@ const SkillSchema = new mongoose.Schema({
 SkillSchema.statics.getAverageCost = async function (jobId) {
   console.log('Calculating avg cost...'.blue);
 
+  // Aggregate calculation - [] is the pipeline with different steps as {} //
   const obj = await this.aggregate([
     {
       $match: { job: jobId }
@@ -59,12 +60,12 @@ SkillSchema.statics.getAverageCost = async function (jobId) {
 
 // Call getAverageCost after save
 SkillSchema.post('save', function () {
-  this.constructor.getAverageCost(this.jobId);
+  this.constructor.getAverageCost(this.job);
 });
 
 // Call getAverageCost after save
 SkillSchema.pre('remove', function () {
-  this.constructor.getAverageCost(this.jobId);
+  this.constructor.getAverageCost(this.job);
 });
 
 module.exports = mongoose.model('Skill', SkillSchema);
