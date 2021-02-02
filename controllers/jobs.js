@@ -164,7 +164,7 @@ exports.deleteJob = asyncHandler(async (req, res, next) => {
     );
   }
 
-  // Delete job //
+  // Delete job - this remove will also trigger the middleware for deleting its skills //
   job.remove();
 
   res.status(200).json({ success: true, data: {} });
