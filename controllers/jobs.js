@@ -226,6 +226,7 @@ exports.jobPhotoUpload = asyncHandler(async (req, res, next) => {
     );
   }
 
+  // console.log(req.files);
   const file = req.files.file;
 
   // Make sure the image is a photo //
