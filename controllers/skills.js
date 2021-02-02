@@ -1,6 +1,7 @@
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
 const Skill = require('../models/Skill');
+const Job = require('../models/Job');
 
 // @desc      Get skills
 // @route     GET /api/v1/skills
@@ -25,7 +26,7 @@ exports.getSkills = asyncHandler(async (req, res, next) => {
     count: skills.length,
     data: skills
   });
-})
+});
 
 // @desc      Get single skill
 // @route     GET /api/v1/skills/:id
@@ -44,4 +45,27 @@ exports.getSkill = asyncHandler(async (req, res, next) => {
     success: true,
     data: skill
   });
-})
+});
+
+// @desc      Add required skill to a job
+// @route     POST /api/v1/jobs/:jobId/skills
+// @access    Private
+exports.addSkill = asyncHandler(async (req, res, next) => {
+  req.body.job = req.params.jobId;
+
+  const job = await Job.findById(req.params.jobId);
+
+  if (!job) {
+    return next(
+      new ErrorResponse(`No job with the id of ${req.params.jobId}`),
+      404
+    );
+  }
+
+  const skill = await Skill.create(req.body);
+    
+  res.status(200).json({
+    success: true,
+    data: skill
+  });
+});
