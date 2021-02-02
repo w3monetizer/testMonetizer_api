@@ -26,3 +26,22 @@ exports.getSkills = asyncHandler(async (req, res, next) => {
     data: skills
   });
 })
+
+// @desc      Get single skill
+// @route     GET /api/v1/skills/:id
+// @access    Public
+exports.getSkill = asyncHandler(async (req, res, next) => {
+  const skill = await Skill.findById(req.params.id).populate({
+    path: 'job',
+    select: 'name description'
+  });
+
+  if (!course) {
+    return next(new ErrorResponse(`No skill with the id of ${req.params.id}`), 404);
+  }
+    
+  res.status(200).json({
+    success: true,
+    data: skill
+  });
+})
