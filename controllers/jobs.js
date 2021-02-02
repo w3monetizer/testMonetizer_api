@@ -203,22 +203,22 @@ exports.getJobsInRadius = asyncHandler(async (req, res, next) => {
 // @route     PUT /api/v1/jobs/:id/photo
 // @access    Private
 exports.jobPhotoUpload = asyncHandler(async (req, res, next) => { 
-  // Find job to delete // 
+  // Find resource to add image/file to // 
   const job = await Job.findById(req.params.id);
 
   if (!job) {
     return next(
-      new ErrorResponse(`Job not found with id of ${req.params.id}`, 404) // not found in db
+      new ErrorResponse(`Resource not found with id of ${req.params.id}`, 404) // not found in db
     );
   }
 
   // Task: Ensure user is job Owner or Admin // 
   // Test: Test scripts reference <ref> & Test Results <ref> // 
-  if (job.user.toString() !== req.user.id && req.user.role !== 'admin') {
-    return next(
-      new ErrorResponse(`User ${req.params.id} is not authorized`, 401) // not authorized
-    );
-  }
+  // if (job.user.toString() !== req.user.id && req.user.role !== 'admin') {
+  //   return next(
+  //     new ErrorResponse(`User ${req.params.id} is not authorized`, 401) // not authorized
+  //   );
+  // }
 
   if (!req.files) {
     return next(

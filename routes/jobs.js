@@ -26,6 +26,7 @@ router.use('/:jobId/skills', skillRouter);
 router.route('/radius/:zipcode/:distance').get(getJobsInRadius);
 
 // router.route('/:id/photo').put(protect, authorize('publisher', 'admin'), jobPhotoUpload);
+router.route('/:id/photo').put(jobPhotoUpload);
 
 router
   .route('/')
