@@ -7,10 +7,9 @@ const {
 
 const router = express.Router({ mergeParams: true });
 
-router.route('/').get(getSkills);
+router.route('/').get(getSkills).post(addSkill);
 router
   .route('/:id')
-  .get(getSkill)
-  .post(addSkill);
+  .get(getSkill);
 
 module.exports = router;
