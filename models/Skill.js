@@ -40,8 +40,6 @@ const SkillSchema = new mongoose.Schema({
 
 // Static method to get avg of skill/course tuitions
 SkillSchema.statics.getAverageCost = async function (jobId) {
-  console.log('Calculating avg cost...'.blue);
-
   // Aggregate calculation - [] is the pipeline with different steps as {} //
   const obj = await this.aggregate([
     {
