@@ -36,7 +36,7 @@ exports.getSkill = asyncHandler(async (req, res, next) => {
     select: 'name description'
   });
 
-  if (!course) {
+  if (!skill) {
     return next(new ErrorResponse(`No skill with the id of ${req.params.id}`), 404);
   }
     
