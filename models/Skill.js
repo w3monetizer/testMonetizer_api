@@ -40,17 +40,31 @@ const SkillSchema = new mongoose.Schema({
 
 // Static method to get avg of skill/course tuitions
 SkillSchema.statics.getAverageCost = async function (jobId) {
-  
+  console.log('Calculating avg cost...'.blue);
+
+  const obj = await this.aggregate([
+    {
+      $match: { job: jobId }
+    },
+    {
+      $group: {
+        _id: '$job',
+        averageCost: { $avg: '$tuition' }
+      }
+    }
+  ]);
+
+  console.log(obj);
 }
 
 // Call getAverageCost after save
 SkillSchema.post('save', function () {
-  
+  this.constructor.getAverageCost(this.jobId);
 });
 
 // Call getAverageCost after save
 SkillSchema.pre('remove', function () {
-  
+  this.constructor.getAverageCost(this.jobId);
 });
 
 module.exports = mongoose.model('Skill', SkillSchema);
