@@ -69,3 +69,27 @@ exports.addSkill = asyncHandler(async (req, res, next) => {
     data: skill
   });
 });
+
+// @desc      Update skill
+// @route     PUT /api/v1/skills/:id
+// @access    Private
+exports.updateSkill = asyncHandler(async (req, res, next) => {
+  let skill = await Skill.findById(req.params.id);
+
+  if (!skill) {
+    return next(
+      new ErrorResponse(`No skill with the id of ${req.params.id}`),
+      404
+    );
+  }
+
+  skill = await Skill.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  });
+    
+  res.status(200).json({
+    success: true,
+    data: skill
+  });
+});
