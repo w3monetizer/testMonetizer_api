@@ -12,7 +12,14 @@ const advancedResults = require('../middleware/advancedResults');
 
 const router = express.Router({ mergeParams: true });
 
-router.route('/').get(getSkills).post(addSkill);
+router.route('/')
+  .get(advancedResults(Skill, {
+      path: 'job',
+      select: 'name description'
+    }),
+    getSkills
+  )
+  .post(addSkill);
 
 router
   .route('/:id')
