@@ -244,7 +244,7 @@ exports.jobPhotoUpload = asyncHandler(async (req, res, next) => {
   // Create custom server Filename: photo_<id> //
   file.name = `photo_${job._id}${path.parse(file.name).ext}`;
 
-  // Save file to server upload path //
+  // Save file to server FILE_UPLOAD_PATH - must be created //
   file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async err => {
     if (err) {
       console.error(err);
