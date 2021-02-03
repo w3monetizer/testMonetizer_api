@@ -251,6 +251,7 @@ exports.jobPhotoUpload = asyncHandler(async (req, res, next) => {
       return next(new ErrorResponse(`Problem with file upload`, 500));
     }
 
+    // record filename + project-repo/path? in database //
     await Job.findByIdAndUpdate(req.params.id, { photo: file.name });
 
     res.status(200).json({
