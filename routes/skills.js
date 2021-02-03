@@ -7,6 +7,9 @@ const {
   deleteSkill
 } = require('../controllers/skills');
 
+const Skill = require('../models/Skill');
+const advancedResults = require('../middleware/advancedResults');
+
 const router = express.Router({ mergeParams: true });
 
 router.route('/').get(getSkills).post(addSkill);
