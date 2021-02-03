@@ -10,7 +10,7 @@ const {
 } = require('../controllers/jobs');
 
 const Job = require('../models/Job');
-// const advancedResults = require('../middleware/advancedResults');
+const advancedResults = require('../middleware/advancedResults');
 
 // Include other resource routers //
 const skillRouter = require('./skills');
@@ -32,7 +32,7 @@ router
   .route('/')
   .get(getJobs)
   .post(createJob)
-//  .get(advancedResults(Job, 'skills'), getJobs)
+  .get(advancedResults(Job, 'skills'), getJobs)
 //  .post(protect, authorize('publisher', 'admin'), createJob);
 
 router
