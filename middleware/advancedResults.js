@@ -71,6 +71,8 @@ const advancedResults = (model, populate) => async (req, res, next) => {  // A f
     data: results
   }
 
+  console.log(res.advancedResults);
+
   next(); // calling next() since this is a middleware //
 };
 

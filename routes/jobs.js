@@ -30,7 +30,6 @@ router.route('/:id/photo').put(jobPhotoUpload);
 
 router
   .route('/')
-  .get(getJobs)
   .post(createJob)
   .get(advancedResults(Job, 'skills'), getJobs)
 //  .post(protect, authorize('publisher', 'admin'), createJob);
