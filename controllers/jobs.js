@@ -236,10 +236,12 @@ exports.jobPhotoUpload = asyncHandler(async (req, res, next) => {
 
   // Check filesize //
   if (file.size > process.env.MAX_FILE_UPLOAD) {
-    return next(new ErrorResponse(`Please upload an image file less than ${process.env.MAX_FILE_UPLOAD}`, 400));
+    return next(new ErrorResponse(
+      `Please upload an image file less than ${process.env.MAX_FILE_UPLOAD}`,
+      400));
   }
 
-  // Create custom server side filename //
+  // Create custom server Filename: photo_<id> //
   file.name = `photo_${job._id}${path.parse(file.name).ext}`;
 
   // Save file to server upload path //
