@@ -9,6 +9,10 @@ const SheetSchema = new mongoose.Schema({
     maxlength: [20, 'Name can not be more than 20 characters']
   },
   rows: [[{ type: String }]],
+  a: [
+    ['A', 'B', 'C'],
+    ['1 + 1', '=', '?']
+  ],
   createdAt: {
     type: Date,
     default: Date.now
