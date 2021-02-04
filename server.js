@@ -24,6 +24,7 @@ if (process.env.NODE_ENV === 'local') {
 const spreadsheets = require('./routes/spreadsheets');
 const jobs = require('./routes/jobs');
 const skills = require('./routes/skills');
+const auth = require('./routes/auth');
 
 const app = express();
 
