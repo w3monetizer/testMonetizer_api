@@ -60,13 +60,13 @@ describe('Updating records', () => {
   //     });
   // });
 
-  it('A user can have their postcount incremented by 1', () => {
-    User.update({ name: 'Joe' }, { $inc: { postCount: 1 } })
+  it('A user can have their postcount incremented by 10', (done) => {
+    User.update({ name: 'Joe' }, { $inc: { postCount: 10 } })
       .then(() => User.findOne({ name: 'Joe' }))
       .then((user) => {
-        assert(user.postCount === 1);
+        assert(user.postCount === 10);
         done();
       });
-  })
+  });
 
 });
