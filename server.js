@@ -51,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/v1/spreadsheets', spreadsheets);
 app.use('/api/v1/jobs', jobs);
 app.use('/api/v1/skills', skills);
+app.use('/api/v1/auth', auth);
 
 // Middlewares
 app.use(errorHandler);
