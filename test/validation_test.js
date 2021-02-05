@@ -20,4 +20,12 @@ describe('Validating records', () => {
     //   //     - and validate all results are passing OK / no Stopper, Abort 
     // });
   });
+
+  it('requires a user name longer than 2 characters', () => {
+    const user = new User({ name: 'Al' });
+    const validationResult = user.validateSync(); // no Async since it is a simple function to run 
+    const { message } = validationResult.errors.name;
+
+    assert(message === 'Name must be longer than 2 characters.');
+  });
 });
