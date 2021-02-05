@@ -8,8 +8,10 @@ describe('Validating records', () => {
     // not saving to db but just validating locally
     const validationResult = user.validateSync();
     // console.log(validationResult);
-    const {message} = validationResult.errors.name;
-    console.log(message);
+    const { message } = validationResult.errors.name;
+    // console.log(message);  // => Name is required.
+
+    assert(message === 'Name is required.');
 
     // or Async validation to allow for longer processing, http, etc:
     // user.validate((validationResult) => {
