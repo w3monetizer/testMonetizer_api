@@ -26,8 +26,24 @@ describe('Subdocuments', () => {
       });
   });
 
-  it('Can add subdocuments to an existing record', () => {
+  it('Can add subdocuments to an existing record', (done) => {
+    // Create a record, save it, pull it from db, add a post to it, and check post was added properly //
+    const joe = new User({
+      name: 'Joe',
+      posts: []     // for future engineers to know Joe started with a blank list of posts //
+    });
 
+  joe.save()
+    .then(() => User.findOne({ name: 'Joe' }))
+    .then((user) => {
+      user.posts.push({ title: 'New Post' })
+      return user.save();
+    })
+    .then(() => User.findOne({ name: 'Joe' }))
+    .then((user) => {
+      assert(user.posts[0].title === 'New Post')
+      done();
+    });
   });
 
 });
