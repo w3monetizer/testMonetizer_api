@@ -19,10 +19,10 @@ describe('Subdocuments', () => {
       .then(() => User.findOne({ name: 'Joe' }))
       .then((user) => {
         assert(user.posts[0].title === 'PostTitle');
-        console.log(eval(user.posts[0].sheet[1][0]));
+        console.log('eval(user.posts[0].sheet[1][0]) = ',
+          eval(user.posts[0].sheet[1][0]));
         assert(user.posts[0].sheet[1][0] === '1 + 1');
         done();
       });
   });
-
 });
