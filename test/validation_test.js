@@ -10,6 +10,8 @@ describe('Validating records', () => {
     // or Async validation to allow for longer processing, http, etc:
     user.validate((validationResult) => {
       // longer async validation proces
+      // eg: Run cross reference scripts on W3 sheets (project, service)
+      //     - and validate all results are passing OK / no Stopper, Abort 
     });
   });
 });
