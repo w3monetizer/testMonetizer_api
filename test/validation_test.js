@@ -8,9 +8,9 @@ describe('Validating records', () => {
     // not saving to db but just validating locally
     const validationResult = user.validateSync();
     // console.log(validationResult);
-    const message = validationResult.errors.name.message;
+    const {message} = validationResult.errors.name;
     console.log(message);
-    
+
     // or Async validation to allow for longer processing, http, etc:
     // user.validate((validationResult) => {
     //   // longer async validation proces
