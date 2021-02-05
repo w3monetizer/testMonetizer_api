@@ -46,4 +46,30 @@ describe('Subdocuments', () => {
     });
   });
 
+    it('Can add a row to a spreadsheet in a subdocument of an existing record', (done) => {
+    // Create a record, save it, pull it from db, add/save a post with new row in sheet[], and check new row was added properly //
+    const joe = new User({
+      name: 'Joe',
+      posts: [{
+        title: 'PostTitle',
+        sheet: [
+          ['A', 'B', 'C'],
+          ['1 + 1', '=', '?']
+        ]
+      }]     
+    });
+
+  joe.save()
+    .then(() => User.findOne({ name: 'Joe' }))
+    .then((user) => {
+      user.posts[0].sheet.push(['test', 'row']);
+      return user.save();
+    })
+    .then(() => User.findOne({ name: 'Joe' }))
+    .then((user) => {
+      assert(user.posts[0].sheet[2][1] === 'row')
+      done();
+    });
+  });
+
 });
