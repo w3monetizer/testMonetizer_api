@@ -5,7 +5,7 @@ function Blockchain(repo) {
 
 Blockchain.prototype.createNewBlock = function (nonce, previousBlockHash, hash) {
   const newBlock = {
-    index: this.chain.lenght + 1,
+    index: this.chain.length + 1,
     timestamp: Date.now(),
     transactions: this.newTransactions,
     nonce: nonce, // Proof of work - a number - proof that we created the block in a legitimate way
