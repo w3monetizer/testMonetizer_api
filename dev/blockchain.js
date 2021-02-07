@@ -3,6 +3,7 @@ function Blockchain(repo) {
   this.newTransactions = [];  // to store new contributions/tx before being tested/mined
 }
 
+
 Blockchain.prototype.createNewBlock = function (nonce, previousBlockHash, hash) {
   const newBlock = {
     index: this.chain.length + 1,
@@ -17,6 +18,11 @@ Blockchain.prototype.createNewBlock = function (nonce, previousBlockHash, hash) 
   this.chain.push(newBlock);
 
   return newBlock;
+}
+
+
+Blockchain.prototype.getLastBlock = function () {
+  return this.chain[this.chain.length - 1];
 }
 
 module.exports = Blockchain;
