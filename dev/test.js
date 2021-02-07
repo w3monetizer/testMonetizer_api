@@ -12,4 +12,6 @@ solution.createNewTransaction(50, 'ALEX-SENDER-ADDR', 'JENN-RECIPIENT-ADDR');
 solution.createNewTransaction(300, 'ALEX-SENDER-ADDR', 'JENN-RECIPIENT-ADDR');
 solution.createNewTransaction(2000, 'ALEX-SENDER-ADDR', 'JENN-RECIPIENT-ADDR');
 
-console.log(solution);
+solution.createNewBlock(8353487, 'KHGFITFKYFKHKG', 'FWEQFEHVKHLIKYGK');
+
+console.log(solution.chain[2]);
