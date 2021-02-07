@@ -45,7 +45,7 @@ Blockchain.prototype.createNewTransaction = function (amount, sender, recipient,
 }
 
 
-Blockchain.prototype.hashBlock = function (blockData) {
+Blockchain.prototype.hashBlock = function (previousBlockHash, currentBlockData, nonce) {
   
 }
 
