@@ -6,8 +6,9 @@ function Blockchain(repo) {
   this.chain = [];  // to store  all solution blocks / validated tx/contrib
   this.pendingTransactions = [];  // to store new contributions/tx before being tested/mined
 
-  this.createNewBlock(100, '0', '0'); // For Genesis can be Arbitrary params for solution/bitcoin js Dev
-  // this.createNewBlock(Object.keys(repo).length, 'OWNER', 'REPO_URL'); // For Genesis can be Arbitrary params for solution/bitcoin js Dev
+  // this.createNewBlock(100, '0', '0'); // For Genesis can be Arbitrary params for solution/bitcoin js Dev
+  // this.createNewBlock(Object.keys(repo).length, 'OWNER_STEFIAN', 'REPO_URL'); 
+  this.createNewBlock(33865295, 'stefian', 'https://github.com/w3monetizer/testMonetizer_api'); 
 }
 
 
