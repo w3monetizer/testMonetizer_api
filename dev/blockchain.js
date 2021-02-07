@@ -1,5 +1,7 @@
 const sha256 = require('sha256');
 
+const TRUST_STRING = '0';  // '0' or null for W3 solution Monetizer Dev; '0000' for bitcoin Dev
+
 function Blockchain(repo) {
   this.chain = [];  // to store  all blocks / validated tx/contrib
   this.pendingTransactions = [];  // to store new contributions/tx before being tested/mined
