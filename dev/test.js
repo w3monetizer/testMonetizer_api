@@ -23,7 +23,7 @@ const currentBlockData = [
 // Find the correct nounce where the hash starts with 0000
 console.log(solution.proofOfWork(previousBlockHash, currentBlockData));
 
-// Check the hash starts with 1-4 zeros
+// Check that current solution hash starts with 1-4 zeros
 console.log(0, solution.hashBlock(previousBlockHash, currentBlockData, 0)); // 0
 console.log(304, solution.hashBlock(previousBlockHash, currentBlockData, 304)); // 00
 console.log(9986, solution.hashBlock(previousBlockHash, currentBlockData, 9986)); // 000
