@@ -7,11 +7,12 @@
     "start": "NODE_ENV=production node server",
     "dev": "nodemon server",
     "local": "NODE_ENV=local nodemon server",
-    "test": "nodemon --exec 'mocha -R min --timeout 10000 --exit'"
+    "test": "nodemon --exec 'mocha -R min --timeout 10000 --exit'",
+    "blockchain": "nodemon --watch dev -e js dev/api.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/w3monetizer/colabmoney_api.git"
+    "url": "git+https://github.com/w3monetizer/testMonetizer_api.git"
   },
   "keywords": [
     "colab",
