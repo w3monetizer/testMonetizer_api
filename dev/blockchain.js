@@ -51,13 +51,23 @@ Blockchain.prototype.hashBlock = function (previousBlockHash, currentBlockData, 
   return hash;
 }
 
-
+// solution.hashBlock(previousBlockHash, currentBlockData, nonce); // nonce++ at each iteration
+// => repeatedly hash block until it finds correct hash => '0000HASHSTARTINNGWITH4ZEROS'
+// => uses current block data for the hash, but also the previousBlockHash
+// => continuously changes nonce value until it finds the correct hash
+// => returns to us the nonce value that creates the correct hash
 Blockchain.prototype.proofOfWork = function (previousBlockHash, currentBlockData) {
-  // solution.hashBlock(previousBlockHash, currentBlockData, nonce); // nonce++ at each iteration
-  // => repeatedly hash block until it finds correct hash => '0000HASHSTARTINNGWITH4ZEROS'
-  // => uses current block data for the hash, but also the previousBlockHash
-  // => continuously changes nonce value until it finds the correct hash
-  // => returns to us the nonce value that creates the correct hash
+  
+  // ToDo: First Test current Block Data (commits, etc against test scripts in the project repo) 
+
+  let nonce = 0;
+  let hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+  while (hash.substring(0, 4) !== '0000') {
+    nonce++;
+    hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+  }
+
+  return nonce; // the nounce found where the hash starts with x zeros
 }
 
 
