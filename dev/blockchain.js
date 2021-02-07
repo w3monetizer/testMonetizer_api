@@ -1,3 +1,5 @@
+const sha256 = require('sha256');
+
 function Blockchain(repo) {
   this.chain = [];  // to store  all blocks / validated tx/contrib
   this.pendingTransactions = [];  // to store new contributions/tx before being tested/mined
