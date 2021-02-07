@@ -1,8 +1,19 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
  
-app.get('/', function (req, res) {
-  res.send('Hello World')
-})
+// ~/blockchain
+app.get('/solution', function (req, res) {
+
+});
  
-app.listen(3000)
+// ~/transaction
+app.post('/commit', function (req, res) {
+
+});
+
+// ~/mine
+app.get('/test', function (req, res) {
+
+});
+
+app.listen(3000);
