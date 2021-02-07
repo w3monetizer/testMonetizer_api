@@ -8,6 +8,7 @@ app.get('/solution', function (req, res) {
  
 // ~/transaction
 app.post('/commit', function (req, res) {
+  console.log(req.body);
   res.send('It works!!!');
 });
 
