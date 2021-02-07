@@ -21,4 +21,7 @@ const currentBlockData = [
 ];
 
 // Find the correct nounce where the hash starts with 0000
-console.log(solution.proofOfWork(previousBlockHash, currentBlockData));
+// console.log(solution.proofOfWork(previousBlockHash, currentBlockData));
+
+// Check the hash starts with 0000
+console.log(solution.hashBlock(previousBlockHash, currentBlockData, 54816));
