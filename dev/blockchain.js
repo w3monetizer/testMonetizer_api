@@ -65,7 +65,7 @@ Blockchain.prototype.proofOfWork = function (previousBlockHash, currentBlockData
   let nonce = 0;
   let hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
   // for w3Monetizer Dev we will leave it at '0' instead of '0000' 
-  while (hash.substring(0, 1) !== '0') { 
+  while (hash.substring(0, TRUST_STRING.length) !== TRUST_STRING) { 
     nonce++;
     hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
     console.log(nonce, hash); // for testing - listing nonces & hashes
