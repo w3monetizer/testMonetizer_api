@@ -8,4 +8,4 @@ solution.createNewTransaction(100, 'ALEX-SENDER-ADDR', 'JENN-RECIPIENT-ADDR');
 
 solution.createNewBlock(1326987, 'JHFKVKKYFKHKG', 'KJHBKJHVKHLIKYGK');
 
-console.log(solution);
+console.log(solution.chain[1]);
