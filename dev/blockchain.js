@@ -52,4 +52,13 @@ Blockchain.prototype.hashBlock = function (previousBlockHash, currentBlockData, 
 }
 
 
+Blockchain.prototype.proofOfWork = function (previousBlockHash, currentBlockData) {
+  // solution.hashBlock(previousBlockHash, currentBlockData, nonce); // nonce++ at each iteration
+  // => repeatedly hash block until it finds correct hash => '0000HASHSTARTINNGWITH4ZEROS'
+  // => uses current block data for the hash, but also the previousBlockHash
+  // => continuously changes nonce value until it finds the correct hash
+  // => returns to us the nonce value that creates the correct hash
+}
+
+
 module.exports = Blockchain;
