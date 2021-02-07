@@ -3,8 +3,11 @@ const sha256 = require('sha256');
 const TRUST_STRING = '0';  // '0' or null for W3 solution Monetizer Dev; '0000' for bitcoin Dev
 
 function Blockchain(repo) {
-  this.chain = [];  // to store  all blocks / validated tx/contrib
+  this.chain = [];  // to store  all solution blocks / validated tx/contrib
   this.pendingTransactions = [];  // to store new contributions/tx before being tested/mined
+
+  this.createNewBlock(100, '0', '0'); // For Genesis can be Arbitrary params for solution/bitcoin js Dev
+  // this.createNewBlock(Object.keys(repo).length, 'OWNER', 'REPO_URL'); // For Genesis can be Arbitrary params for solution/bitcoin js Dev
 }
 
 
