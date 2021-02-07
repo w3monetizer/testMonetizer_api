@@ -19,7 +19,6 @@ const currentBlockData = [
     recipient: 'HGRDFJFKFGJDD'
   },
 ];
-const nonce = 100;
 
-
-console.log(solution.hashBlock(previousBlockHash, currentBlockData, nonce));
+// Find the correct nounce where the hash starts with 0000
+console.log(solution.proofOfWork(previousBlockHash, currentBlockData));
