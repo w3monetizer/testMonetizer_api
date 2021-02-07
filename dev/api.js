@@ -9,7 +9,7 @@ app.get('/solution', function (req, res) {
 // ~/transaction
 app.post('/commit', function (req, res) {
   console.log(req.body);
-  res.send('It works!!!');
+  res.send(`The amount of the transaction is ${req.body.amount} ATP.`);
 });
 
 // ~/mine
