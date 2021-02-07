@@ -24,5 +24,6 @@ const currentBlockData = [
 console.log(solution.proofOfWork(previousBlockHash, currentBlockData));
 
 // Check the hash starts with 0000
+console.log(304, solution.hashBlock(previousBlockHash, currentBlockData, 304)); // 00
 console.log(9986, solution.hashBlock(previousBlockHash, currentBlockData, 9986)); // 000
 console.log(54816, solution.hashBlock(previousBlockHash, currentBlockData, 54816)); // 0000
