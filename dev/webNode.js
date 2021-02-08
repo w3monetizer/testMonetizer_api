@@ -60,8 +60,16 @@ app.get('/test', function (req, res) {
 // register a node and broadcast it to the whole network
 app.post('/register-and-broadcast-node', function (req, res) {
   const newNodeUrl = req.body.newNodeUrl;
-  // ... broadcast to the net
+  // Register the node on the current server
+  // then broadcast to the net/servers which will accept the new node on /register-node endpoint
+  // the other servers do not have to broadcast the new node !!
 });
+
+// register a node with the network
+app.post('/register-node', function (req, res) {
+  
+});
+
 
 app.listen(port, function () {
   console.log(`Listening on port ${port}...`);
