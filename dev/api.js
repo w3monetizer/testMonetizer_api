@@ -17,8 +17,14 @@ app.get('/solution', function (req, res) {
  
 // ~/transaction
 app.post('/commit', function (req, res) {
-  console.log(req.body);
-  res.send(`The amount of the transaction is ${req.body.amount} ATP.`);
+  const blockIndex = solution.createNewTransaction(
+    req.body.amount, req.body.sender, req.body.recipient,
+    req.body.commit,
+    req.body.senderRepo,      // project repo //
+    req.body.recipientRepo,   // service repo //
+    req.body.recipientBranch  // service repo branch for the project //
+  );
+  res.json({ note: `Commit will be added in block ${blockIndex}.` })
 });
 
 // ~/mine
