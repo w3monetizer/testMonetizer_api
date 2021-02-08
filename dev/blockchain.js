@@ -1,4 +1,5 @@
 const sha256 = require('sha256');
+const currentNodeUrl = process.argv[3];  // get the node url from the start cmd
 
 const TRUST_STRING = '0';  // '0' or null for W3 solution Monetizer Dev; '0000' for bitcoin Dev
 
