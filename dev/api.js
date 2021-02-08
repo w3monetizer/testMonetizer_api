@@ -27,7 +27,7 @@ app.post('/pullRequest', function (req, res) {
     req.body.recipientRepo,   // service repo //
     req.body.recipientBranch  // service repo branch for the project //
   );
-  res.json({ note: `Commit will be added in block ${blockIndex}.` })
+  res.json({ note: `Pull Request (Offer) will be added in block ${blockIndex}.` });
 });
 
 // ~/mine /test a solution block
