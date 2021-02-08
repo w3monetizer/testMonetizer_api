@@ -72,7 +72,7 @@ Blockchain.prototype.proofOfWork = function (previousBlockHash, currentBlockData
   while (hash.substring(0, TRUST_STRING.length) !== TRUST_STRING) { 
     nonce++;
     hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
-    console.log(nonce, hash); // for testing - listing nonces & hashes
+    // console.log(nonce, hash); // for testing - listing nonces & hashes
   }
 
   return nonce; // the nounce found where the hash starts with x zeros
