@@ -27,9 +27,18 @@ app.post('/commit', function (req, res) {
   res.json({ note: `Commit will be added in block ${blockIndex}.` })
 });
 
-// ~/mine
+// ~/mine a block
 app.get('/test', function (req, res) {
+  const lastBlock = solution.getLastBlock();
+  const previousBlockHash = lastBlock['hash'];
+  const currentBlockData = {
+    transactions: solution.pendingTransactions,
+    index: lastBlock['index'] + 1
+  }
 
+  const nonce = solution.proofOfWork();
+
+  const newBlock = solution.createNewBlock()
 });
 
 app.listen(3000, function () {
