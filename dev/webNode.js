@@ -57,6 +57,12 @@ app.get('/test', function (req, res) {
   });
 });
 
+// register a node and broadcast it to the whole network
+app.post('/register-and-broadcast-node', function (req, res) {
+  const newNodeUrl = req.body.newNodeUrl;
+  // ... broadcast to the net
+});
+
 app.listen(port, function () {
   console.log(`Listening on port ${port}...`);
 });
