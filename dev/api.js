@@ -1,13 +1,18 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
+
+const Blockchain = require('./blockchain');
+
+const solution = new Blockchain();
+
+const app = express();
 
 app.use(bodyParser.json());  // for parsing json req.body
 app.use(bodyParser.urlencoded({ extended: false }));  // for parsing req.body form data
  
 // ~/blockchain
 app.get('/solution', function (req, res) {
-
+  res.send(solution);
 });
  
 // ~/transaction
