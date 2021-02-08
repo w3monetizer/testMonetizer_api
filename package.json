@@ -8,7 +8,11 @@
     "dev": "nodemon server",
     "local": "NODE_ENV=local nodemon server",
     "test": "nodemon --exec 'mocha -R min --timeout 10000 --exit'",
-    "blockchain": "nodemon --watch dev -e js dev/webNode.js 3001"
+    "node_1": "nodemon --watch dev -e js dev/webNode.js 3001",
+    "node_2": "nodemon --watch dev -e js dev/webNode.js 3002",
+    "node_3": "nodemon --watch dev -e js dev/webNode.js 3003",
+    "node_4": "nodemon --watch dev -e js dev/webNode.js 3004",
+    "node_5": "nodemon --watch dev -e js dev/webNode.js 3005"
   },
   "repository": {
     "type": "git",
