@@ -41,6 +41,11 @@ app.get('/test', function (req, res) {
   const nonce = solution.proofOfWork(previousBlockHash, currentBlockData);
   const blockHash = solution.hashBlock(previousBlockHash, currentBlockData, nonce);
 
+  // Adding a testing/mining reward for the tester node of $12.5 ATP / WTP 
+  // Refactor Option : ToDo replace 12.5 bitcoin with 
+  //   - eg: a % of project budget * % of tests passed
+  //   - Test reward rule to be defined in the public project repo 
+  // Refactor Option : ToDo replace "00" with Owner/Project Repo
   solution.createNewTransaction(12.5, "00", nodeAddress);
 
   const newBlock = solution.createNewBlock(nonce, previousBlockHash, blockHash);
