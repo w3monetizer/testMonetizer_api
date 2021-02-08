@@ -19,7 +19,7 @@ app.get('/solution', function (req, res) {
 });
  
 // ~/transaction
-app.post('/commit', function (req, res) {
+app.post('/pullRequest', function (req, res) {
   const blockIndex = solution.createNewTransaction(
     req.body.amount, req.body.sender, req.body.recipient,
     req.body.commit,
@@ -46,7 +46,7 @@ app.get('/test', function (req, res) {
   //   - eg: a % of project budget * % of tests passed
   //   - Test reward rule to be defined in the public project repo 
   // Refactor Option : ToDo replace "00" with Owner/Project Repo
-  solution.createNewTransaction(12.5, "00", nodeAddress);
+  solution.createNewTransaction(12.5, "Project/BudgetOwnerAddr", nodeAddress);
 
   const newBlock = solution.createNewBlock(nonce, previousBlockHash, blockHash);
   res.json({
