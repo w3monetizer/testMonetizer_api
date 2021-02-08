@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const uuid = require('uuid').v1;  // To create an Unique Random ID for the current node
 
+const port = process.argv[2]; // To read the port from command args
+
 const nodeAddress = uuid().split('-').join(''); // remove the '-' from the node ID
 
 const Blockchain = require('./blockchain');
