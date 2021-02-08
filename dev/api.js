@@ -1,5 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const uuid = require('uuid').v1;  // To create an Unique Random ID for the current node
+
+const nodeAddress = uuid().split('-').join(''); // remove the '-' from the node ID
 
 const Blockchain = require('./blockchain');
 
@@ -27,7 +30,7 @@ app.post('/commit', function (req, res) {
   res.json({ note: `Commit will be added in block ${blockIndex}.` })
 });
 
-// ~/mine a block
+// ~/mine /test a solution block
 app.get('/test', function (req, res) {
   const lastBlock = solution.getLastBlock();
   const previousBlockHash = lastBlock['hash'];
@@ -35,10 +38,16 @@ app.get('/test', function (req, res) {
     transactions: solution.pendingTransactions,
     index: lastBlock['index'] + 1
   }
+  const nonce = solution.proofOfWork(previousBlockHash, currentBlockData);
+  const blockHash = solution.hashBlock(previousBlockHash, currentBlockData, nonce);
 
-  const nonce = solution.proofOfWork();
+  solution.createNewTransaction(12.5, "00", nodeAddress);
 
-  const newBlock = solution.createNewBlock()
+  const newBlock = solution.createNewBlock(nonce, previousBlockHash, blockHash);
+  res.json({
+    note: "New solution block mined/tested successfully",
+    block: newBlock
+  });
 });
 
 app.listen(3000, function () {
