@@ -1,5 +1,6 @@
 const sha256 = require('sha256');
 const currentNodeUrl = process.argv[3];  // get the node url from the start cmd
+const uuid = require('uuid').v1;  // To create Unique Random IDs for tx, etc
 
 const TRUST_STRING = '0';  // '0' or null for W3 solution Monetizer Dev; '0000' for bitcoin Dev
 
@@ -43,15 +44,14 @@ Blockchain.prototype.createNewTransaction = function (amount, sender, recipient,
     amount: amount,
     sender: sender,
     recipient: recipient,
+    transactionId: uuid().split('-').join(''),  // Unique Random Tx Id
     commit,
     senderRepo,
     recipientRepo,
     recipientBranch
   } // commit, senderRepo, recipientRepo, recipientBranch required for coMonetizer
 
-  this.pendingTransactions.push(newTransaction);
-
-  return this.getLastBlock()['index'] + 1;
+  return newTransaction;
 }
 
 
