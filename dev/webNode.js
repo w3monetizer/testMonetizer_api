@@ -61,8 +61,8 @@ app.post('/pullRequest/broadcast', function (req, res) {
 
   Promise.all(requestPromises)
     .then(data => {
-      res.json( note: 'Pull Request created and broadcast successfully.')
-    })
+      res.json({ note: 'Pull Request created and broadcast successfully.' });
+    });
 });
 
 
