@@ -33,6 +33,39 @@ app.post('/pullRequest', function (req, res) {
   res.json({ note: `Pull Request (Offer) will be added in block ${blockIndex}.` });
 });
 
+
+// ~/transaction/broadcast
+app.post('/pullRequest/broadcast', function (req, res) {
+  const newPullRequest = solution.createNewTransaction(
+    req.body.amount,
+    req.body.sender,
+    req.body.recipient,
+    req.body.commit,
+    req.body.senderRepo,
+    req.body.recipientRepo,
+    req.body.recipientBranch
+  );
+  solution.addTransactionToPendingTransactions(newPullRequest);
+
+  const requestPromises = [];
+  solution.webNodes.forEach(webNodeUrl => { // broadcast to all web nodes
+    const requestOptions = {
+      uri: webNodeUrl + '/pullRequest',
+      method: 'POST',
+      body: newPullRequest,
+      json: true
+    };
+
+    requestPromises.push(rp(requestOptions));
+  });
+
+  Promise.all(requestPromises)
+    .then(data => {
+      res.json( note: 'Pull Request created and broadcast successfully.')
+    })
+});
+
+
 // ~/mine /test a solution block
 app.get('/test', function (req, res) {
   const lastBlock = solution.getLastBlock();
