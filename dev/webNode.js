@@ -37,9 +37,7 @@ app.post('/pullrequest', function (req, res) {
 // ~/transaction/broadcast
 app.post('/pullrequest/broadcast', function (req, res) {
   const newPullRequest = solution.createNewTransaction(
-    req.body.amount,
-    req.body.sender,
-    req.body.recipient,
+    req.body.amount, req.body.sender, req.body.recipient,
     req.body.commit,
     req.body.senderRepo,
     req.body.recipientRepo,
