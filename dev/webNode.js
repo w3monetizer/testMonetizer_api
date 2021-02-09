@@ -22,7 +22,7 @@ app.get('/solution', function (req, res) {
 });
  
 // ~/transaction
-app.post('/pullRequest', function (req, res) {
+app.post('/pullrequest', function (req, res) {
   const blockIndex = solution.createNewTransaction(
     req.body.amount, req.body.sender, req.body.recipient,
     req.body.commit,
@@ -35,7 +35,7 @@ app.post('/pullRequest', function (req, res) {
 
 
 // ~/transaction/broadcast
-app.post('/pullRequest/broadcast', function (req, res) {
+app.post('/pullrequest/broadcast', function (req, res) {
   const newPullRequest = solution.createNewTransaction(
     req.body.amount,
     req.body.sender,
@@ -50,7 +50,7 @@ app.post('/pullRequest/broadcast', function (req, res) {
   const requestPromises = [];
   solution.webNodes.forEach(webNodeUrl => { // broadcast to all web nodes
     const requestOptions = {
-      uri: webNodeUrl + '/pullRequest',
+      uri: webNodeUrl + '/pullrequest',
       method: 'POST',
       body: newPullRequest,
       json: true
