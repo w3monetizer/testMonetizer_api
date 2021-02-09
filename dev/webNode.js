@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const uuid = require('uuid').v1;  // To create an Unique Random ID for the current node
+const rp = require('request-promise');
 
 const port = process.argv[2]; // To read the port from command args after webNode
 
@@ -64,6 +65,12 @@ app.post('/register-and-broadcast-node', function (req, res) {
   // Register the node on the current server
   // then broadcast to the net/servers which will accept the new node on /register-node endpoint
   // the other servers do not have to broadcast the new node !!
+  if (solution.webNodes.indexOf(newNodeUrl) == -1) solution.webNodes.push(newNodeUrl);
+
+  solution.webNodes.forEach(webNodeUrl => {
+    // hit the /register-node endpoint
+
+  });
 });
 
 
