@@ -108,9 +108,16 @@ app.post('/register-node', function (req, res) {
 });
 
 
-// register multiple nodes at once
+// register multiple nodes (all solution net) at once - with the new node
 app.post('/register-nodes-bulk', function (req, res) {
-  
+  const allWebNodes = req.body.allWebNodes;
+  allWebNodes.forEach(webNodeUrl => {
+    const nodeNotAlreadyPresent = solution.webNodes.indexOf(webNodeUrl) == -1;
+    const notCurrentNode = solution.currentNodeUrl !== webNodeUrl;
+    if (nodeNotAlreadyPresent && notCurrentNode) solution.webNodes.push(webNodeUrl);
+  });
+
+  res.json({ note: 'Bulk registration successful.' });
 });
 
 
