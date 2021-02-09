@@ -16,41 +16,37 @@ const app = express();
 app.use(bodyParser.json());  // for parsing json req.body
 app.use(bodyParser.urlencoded({ extended: false }));  // for parsing req.body form data
  
-// ~/blockchain
+// Get entire solution blockchain ~ /blockchain
 app.get('/solution', function (req, res) {
   res.send(solution);
 });
  
-// ~/transaction
-app.post('/pullrequest', function (req, res) {
-  const blockIndex = solution.createNewTransaction(
-    req.body.amount, req.body.sender, req.body.recipient,
-    req.body.commit,
-    req.body.senderRepo,      // project repo //
-    req.body.recipientRepo,   // service repo //
-    req.body.recipientBranch  // service repo branch for the project //
-  );
-  res.json({ note: `Pull Request (Offer) will be added in block ${blockIndex}.` });
+// Create a new contribution ~ /transaction
+app.post('/contribution', function (req, res) {
+  const newContribution = req.body;
+  const blockIndex = solution.addTransactionToPendingTransactions(newContribution);
+  res.json({ note: `Contribution will be added in block ${blockIndex}` });
 });
 
 
 // ~/transaction/broadcast
-app.post('/pullrequest/broadcast', function (req, res) {
-  const newPullRequest = solution.createNewTransaction(
+app.post('/contribution/broadcast', function (req, res) {
+  const newContribution = solution.createNewTransaction(
     req.body.amount, req.body.sender, req.body.recipient,
     req.body.commit,
     req.body.senderRepo,
     req.body.recipientRepo,
     req.body.recipientBranch
   );
-  solution.addTransactionToPendingTransactions(newPullRequest);
+  // add Contribution to local node pendingTransactions
+  solution.addTransactionToPendingTransactions(newContribution); 
 
   const requestPromises = [];
   solution.webNodes.forEach(webNodeUrl => { // broadcast to all web nodes
     const requestOptions = {
-      uri: webNodeUrl + '/pullrequest',
+      uri: webNodeUrl + '/contribution',
       method: 'POST',
-      body: newPullRequest,
+      body: newContribution,
       json: true
     };
 
@@ -59,7 +55,7 @@ app.post('/pullrequest/broadcast', function (req, res) {
 
   Promise.all(requestPromises)
     .then(data => {
-      res.json({ note: 'Pull Request created and broadcast successfully.' });
+      res.json({ note: 'Contribution created and broadcast successfully.' });
     });
 });
 
