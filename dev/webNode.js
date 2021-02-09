@@ -82,7 +82,18 @@ app.post('/register-and-broadcast-node', function (req, res) {
 
   Promise.all(regNodesPromises)
     .then(data => {
-      // use the response data from the POSTs to /register-node
+      // use the response data from the POSTs to prep bulk registrations on the new node
+      const bulkRegisterOptions = {
+        uri: newNodeUrl + '/register-nodes-bulk',
+        method: 'POST',
+        body: { allWebNodes: [...solution.webNodes, solution.currentNodeUrl] },
+        json: true
+      };
+
+      return rp(bulkRegisterOptions);
+    })
+    .then(data => {
+      res.json({ note: 'New node registered with network successfully.' })
     });
 });
 
