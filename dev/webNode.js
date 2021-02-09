@@ -100,7 +100,11 @@ app.post('/register-and-broadcast-node', function (req, res) {
 
 // register a node with the network
 app.post('/register-node', function (req, res) {
-  
+  const newNodeUrl = req.body.newNodeUrl;
+  const nodeNotAlreadyPresent = solution.webNodes.indexOf(newNodeUrl) == -1;
+  const notCurrentNode = solution.currentNodeUrl !== newNodeUrl;
+  if(nodeNotAlreadyPresent && notCurrentNode) solution.webNodes.push(newNodeUrl);
+  res.json({ note: 'New node registered successfully.' });
 });
 
 
