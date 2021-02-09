@@ -67,10 +67,23 @@ app.post('/register-and-broadcast-node', function (req, res) {
   // the other servers do not have to broadcast the new node !!
   if (solution.webNodes.indexOf(newNodeUrl) == -1) solution.webNodes.push(newNodeUrl);
 
+  const regNodesPromises = [];  // register nodes promises array
   solution.webNodes.forEach(webNodeUrl => {
-    // hit the /register-node endpoint
+    // hit the /register-node endpoint on all other nodes to broadcast the new node
+    const requestOptions = {
+      uri: webNodeUrl + '/register-node',
+      method: 'POST',
+      body: { newNodeUrl: newNodeUrl },
+      json: true
+    };
 
+    regNodesPromises.push(rp(requestOptions));  // async POST requests to outside nodes
   });
+
+  Promise.all(regNodesPromises)
+    .then(data => {
+      // use the response data from the POSTs to /register-node
+    });
 });
 
 
