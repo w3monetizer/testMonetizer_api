@@ -68,6 +68,9 @@ app.get('/test', function (req, res) {
     transactions: solution.pendingTransactions,
     index: lastBlock['index'] + 1
   }
+
+  // ToDo: Add Method to Solution blockchain.js for testing all pending Contributions
+
   const nonce = solution.proofOfWork(previousBlockHash, currentBlockData);
   const blockHash = solution.hashBlock(previousBlockHash, currentBlockData, nonce);
 
@@ -79,6 +82,9 @@ app.get('/test', function (req, res) {
   solution.createNewTransaction(12.5, "Project/BudgetOwnerAddr", nodeAddress);
 
   const newBlock = solution.createNewBlock(nonce, previousBlockHash, blockHash);
+  
+  
+  
   res.json({
     note: "New solution block mined/tested successfully",
     block: newBlock
