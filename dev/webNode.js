@@ -114,7 +114,7 @@ app.get('/test', function (req, res) {
     })
     .then(data => {
       res.json({
-        note: "New solution block mined/tested successfully",
+        note: "New solution block mined/tested & broadcast successfully",
         block: newBlock
       });
     });
