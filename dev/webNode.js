@@ -79,17 +79,45 @@ app.get('/test', function (req, res) {
   // Refactor Option : ToDo replace 12.5 bitcoin with 
   //   - eg: a % of project budget * % of tests passed
   //   - Test reward rule to be defined in the public project repo 
-  // Refactor Option : ToDo replace "00" with Owner/Project Repo
-  solution.createNewTransaction(12.5, "Project/BudgetOwnerAddr", nodeAddress);
+  // solution.createNewTransaction(12.5, "Project/BudgetOwnerAddr", nodeAddress);
+  // moved to broadcast after creating the new block, broadcast test tx reward
 
   const newBlock = solution.createNewBlock(nonce, previousBlockHash, blockHash);
   
-  
-  
-  res.json({
-    note: "New solution block mined/tested successfully",
-    block: newBlock
+  // Broadcast new block of contributions to the network
+  const requestPromises = [];
+  solution.webNodes.forEach(webNodeUrl => {
+    const requestOptions = {
+      uri: webNodeUrl + '/receive-new-block',
+      method: 'POST',
+      body: { newBlock: newBlock },
+      json: true
+    };
+
+    requestPromises.push(rp(requestOptions));
   });
+
+  Promise.all(requestPromises)
+    .then(data => {
+      // Create and broadcast new mining/testing reward transaction
+      const requestOptions = {
+        uri: solution.currentNodeUrl + '/contribution/broadcast',
+        method: 'POST',
+        body: {
+          amount: 12.5,
+          sender: "Project/BudgetOwnerAddr",
+          recipient: nodeAddress
+        },
+        json: true
+      };
+      return rp(requestOptions);
+    })
+    .then(data => {
+      res.json({
+        note: "New solution block mined/tested successfully",
+        block: newBlock
+      });
+    });
 });
 
 
