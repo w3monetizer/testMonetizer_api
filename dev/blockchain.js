@@ -88,5 +88,41 @@ Blockchain.prototype.proofOfWork = function (previousBlockHash, currentBlockData
   return nonce; // the nounce found where the hash starts with x zeros
 }
 
+// ToDo: Parametrize Genesis block !!! (solution blockchain)
+Blockchain.prototype.chainIsValid = function (solution) {
+  // Iterate over blocks and ensure all hashes line up correctly
+  // Check that the block.previousBlockHash === (prev block).hash
+  let validChain = true;
+
+  for (var i = 1; i < solution.length; i++) {
+    const currentBlock = solution[i];
+    const prevBlock = solution[i - 1];
+    // validate the data in all blocks by checking hashes start with TRUST_STRING
+    const blockHash = this.hashBlock(
+      prevBlock['hash'],
+      {
+        transactions: currentBlock['transactions'],
+        index: currentBlock['index']
+      },
+      currentBlock['nonce']
+    );
+    if (blockHash.substring(0, TRUST_STRING.length) !== TRUST_STRING) validChain = false;
+
+    if (currentBlock['previousBlockHash'] !== prevBlock['hash']) validChain = false;
+  };
+
+  // Validate Genesis block 
+  // ToDo: Parametrize Genesis block !!! (solution blockchain)
+  const genesisBlock = solution[0];
+  const correctNonce = genesisBlock['nonce'] === 33865295; // ToDo: Parametrize! // 100 for bitcoin
+  const correctPreviousBlockHash = genesisBlock['previousBlockHash'] === 'stefian'; // ToDo: Parametrize! // '0' for bitcoin
+  const correctHash = genesisBlock['hash'] === 'https://github.com/w3monetizer/testMonetizer_api'; // ToDo: Parametrize! // '0' for bitcoin
+  const correctTransactions = genesisBlock['transactions'].length === 0;
+
+  if (!correctNonce || !correctPreviousBlockHash || !correctHash || !correctTransactions) validChain = false;
+
+  return validChain;
+};
+
 
 module.exports = Blockchain;
