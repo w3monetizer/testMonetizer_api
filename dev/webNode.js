@@ -224,10 +224,21 @@ app.get('/consensus', function (req, res) {
   Promise.all(requestPromises)
     .then(solutions => { // solutions = the solution blockchains from all nodes
       // Check if there is a blockchain that is longer(faster, cheaper, etc) etc than the others
-      solutions.forEach(solution => {
+      const currentChainLength = solution.chain.length;
+      let maxChainLength = currentChainLength;
+      let newLongestChain = null;
+      let newPendingTransactions = null;
+
+      solutions.forEach(solution => {        
         // Identify the longer (faster, cheaper, etc ) solution
-        // ...
+        if (solution.chain.length > maxChainLength) {
+          maxChainLength = solution.chain.length;
+          newLongestChain = solution.chain;
+          newPendingTransactions = solution.pendingTransactions;
+        };
       });
+
+      
     });
 });
 
