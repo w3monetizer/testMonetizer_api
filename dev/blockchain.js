@@ -109,6 +109,9 @@ Blockchain.prototype.chainIsValid = function (solution) {
     if (blockHash.substring(0, TRUST_STRING.length) !== TRUST_STRING) validChain = false;
 
     if (currentBlock['previousBlockHash'] !== prevBlock['hash']) validChain = false;
+  
+    console.log('previousBlockHash => ', previousBlock['hash']);
+    console.log('currentBlockHash => ', currentBlock['hash']);
   };
 
   // Validate Genesis block 
