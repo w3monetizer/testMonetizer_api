@@ -110,7 +110,7 @@ Blockchain.prototype.chainIsValid = function (solution) {
 
     if (currentBlock['previousBlockHash'] !== prevBlock['hash']) validChain = false;
   
-    console.log('previousBlockHash => ', previousBlock['hash']);
+    console.log('previousBlockHash => ', prevBlock['hash']);
     console.log('currentBlockHash => ', currentBlock['hash']);
   };
 

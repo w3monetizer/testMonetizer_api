@@ -207,6 +207,11 @@ app.post('/register-nodes-bulk', function (req, res) {
 });
 
 
+app.get('/consensus', function (req, res) {
+  
+});
+
+
 app.listen(port, function () {
   console.log(`Listening on port ${port}...`);
 });
