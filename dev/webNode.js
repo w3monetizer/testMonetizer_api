@@ -210,7 +210,25 @@ app.post('/register-nodes-bulk', function (req, res) {
 app.get('/consensus', function (req, res) {
   // Make request to all other nodes in the net to get their solution chains !!
   // and compare them to the solution chain hosted on the current node !!
-  
+  solution.webNodes.forEach(webNodeUrl => {
+    const requestPromises = [];
+    const requestOptions = {
+      uri: webNodeUrl + '/solution',
+      method: 'GET',
+      json: true
+    };
+
+    requestPromises.push(rp(requestOptions));
+  });
+
+  Promise.all(requestPromises)
+    .then(solutions => { // solutions = the solution blockchains from all nodes
+      // Check if there is a blockchain that is longer(faster, cheaper, etc) etc than the others
+      solutions.forEach(solution => {
+        // Identify the longer (faster, cheaper, etc ) solution
+        // ...
+      });
+    });
 });
 
 
