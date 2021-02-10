@@ -70,6 +70,7 @@ app.get('/test', function (req, res) {
   }
 
   // ToDo: Add Method to Solution blockchain.js for testing all pending Contributions
+  // Only Tested and Approved Contributions will be part of the block
 
   const nonce = solution.proofOfWork(previousBlockHash, currentBlockData);
   const blockHash = solution.hashBlock(previousBlockHash, currentBlockData, nonce);
