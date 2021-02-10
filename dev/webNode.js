@@ -121,6 +121,30 @@ app.get('/test', function (req, res) {
 });
 
 
+app.post('/receive-new-block', function (req, res) {
+  const newBlock = req.body.newBlock;
+  // Check if block is legitimate, fits into the chain / hashes
+  // Check  if prev block hash / new block = hash of last block in local chain
+  const lastBlock = solution.getLastBlock();
+  const correctHash = lastBlock.hash === newBlock.previousBlockHash;
+  const correctIndex = lastBlock['index'] + 1 === newBlock['index'];
+
+  if (correctHash && correctIndex) {
+    solution.chain.push(newBlock);
+    solution.pendingTransactions = [];
+    res.json({
+      note: 'New block received and accepted.',
+      newBlock: newBlock
+    })
+  } else {
+    res.json({
+      note: 'New block rejected.',
+      newBlock: newBlock
+    })
+  }
+});
+
+
 // register a node and broadcast it to the whole network
 app.post('/register-and-broadcast-node', function (req, res) {
   const newNodeUrl = req.body.newNodeUrl;
