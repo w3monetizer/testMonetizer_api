@@ -238,13 +238,15 @@ app.get('/consensus', function (req, res) {
         };
       });
 
-      // ToDo: Check if need to replace solution (~bitcoin) with branch(es)???
+      // ToDo: Check if need to replace solution (~bitcoin) with branch(es)??
+      // or include a branch/fork info in the genesis block 
+      // or fork branch(es) on contributing services with multiple options/mapings
       if (!newLongestChain || (newLongestChain && !solution.chainIsValid(newLongestChain))) {
         res.json({
           note: 'Current solution chain has not been replaced.',
           chain: solution.chain
         });
-      } else if (newLongestChain && solution.chainIsValid(newLongestChain)) {
+      } else {
         solution.chain = newLongestChain;
         solution.pendingTransactions = newPendingTransactions;
         res.json({
