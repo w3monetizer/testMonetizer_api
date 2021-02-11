@@ -270,6 +270,12 @@ app.get('/contribution/:transactionId', function (req, res) {
 });
 
 
+// Get details of a specific address node: Contributions, Projects, Services, etc
+app.get('/address/:address', function (req, res) {
+
+});
+
+
 app.listen(port, function () {
   console.log(`Listening on port ${port}...`);
 });
