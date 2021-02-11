@@ -258,6 +258,12 @@ app.get('/consensus', function (req, res) {
 });
 
 
+// Get the block with the provided hash
+app.get('/block/:blockHash', function (req, res) {
+
+});
+
+
 app.listen(port, function () {
   console.log(`Listening on port ${port}...`);
 });
