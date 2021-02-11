@@ -210,8 +210,8 @@ app.post('/register-nodes-bulk', function (req, res) {
 app.get('/consensus', function (req, res) {
   // Make request to all other nodes in the net to get their solution chains !!
   // and compare them to the solution chain hosted on the current node !!
+  const requestPromises = [];
   solution.webNodes.forEach(webNodeUrl => {
-    const requestPromises = [];
     const requestOptions = {
       uri: webNodeUrl + '/solution',
       method: 'GET',
