@@ -271,7 +271,12 @@ app.get('/block/:blockHash', function (req, res) {  // localhost:3001/block/fdwa
 
 // Get the contribution with the provided txId
 app.get('/contribution/:transactionId', function (req, res) {
-
+  const transactionId = req.params.transactionId;
+  const transactionData = solution.getTransaction(transactionId);
+  res.json({
+    transaction: transactionData.transaction,
+    block: transactionData.block
+  })
 });
 
 
