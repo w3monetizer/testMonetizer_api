@@ -270,7 +270,7 @@ app.get('/contribution/:transactionId', function (req, res) {
 });
 
 
-// Get details of a specific address node: Contributions, Projects, Services, etc
+// Get details of a specific address node: Contributions, Projects, Services, Balance, etc
 app.get('/address/:address', function (req, res) {
 
 });
