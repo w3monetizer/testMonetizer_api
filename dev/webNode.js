@@ -280,9 +280,14 @@ app.get('/contribution/:transactionId', function (req, res) {
 });
 
 
-// Get details of a specific address node: Contributions, Projects, Services, Balance, etc
+// Get details of a specific address node: Transactions(Contrib + Tests(mining)) and Balance, 
+// (+ later Projects, Services, branches, etc )
 app.get('/address/:address', function (req, res) {
-
+  const address = req.params.address;
+  const addressData = solution.getAddressData(address);
+  res.json({
+    addressData: addressData
+  })
 });
 
 
