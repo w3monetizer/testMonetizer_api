@@ -130,7 +130,12 @@ Blockchain.prototype.chainIsValid = function (solution) {
 
 // Iterate through the blockchains and search for the block/branch with the blockHash
 Blockchain.prototype.getBlock = function (blockHash) {
-  
+  let correctBlock = null;
+  this.chain.forEach(block => {
+    if (block.hash === blockHash) correctBlock = block;
+  });
+
+  return correctBlock;
 };
 
 
