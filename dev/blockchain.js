@@ -141,8 +141,22 @@ Blockchain.prototype.getBlock = function (blockHash) {
 
 // Get details of tx with a given Id - tx could be Contribution or Test(mine) !!
 Blockchain.prototype.getTransaction = function (transactionId) {
-  // Iterate through all blockcain
-  
+  // Iterate through all blocks and txs in each block
+  let correctTransaction = null;
+  let correctBlock = null;
+  this.chain.forEach(block => {
+    block.transactions.forEach(transaction => {
+      if (transaction.transactionId === transactionId) {
+        correctTransaction = transaction;
+        correctBlock = block;
+      };
+    });
+  });
+
+  return {
+    transaction: correctTransaction,
+    block: correctBlock
+  }
 };
 
 
