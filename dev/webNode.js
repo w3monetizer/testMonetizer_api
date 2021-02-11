@@ -264,6 +264,12 @@ app.get('/block/:blockHash', function (req, res) {
 });
 
 
+// Get the contribution with the provided txId
+app.get('/contribution/:transactionId', function (req, res) {
+
+});
+
+
 app.listen(port, function () {
   console.log(`Listening on port ${port}...`);
 });
