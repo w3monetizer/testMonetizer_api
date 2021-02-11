@@ -139,7 +139,7 @@ Blockchain.prototype.getBlock = function (blockHash) {
 };
 
 
-// Get details of a tx with a given txId
+// Get details of tx with a given Id - tx could be Contribution or Test(mine) !!
 Blockchain.prototype.getTransaction = function (transactionId) {
   
 };
