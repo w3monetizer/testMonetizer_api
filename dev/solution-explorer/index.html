@@ -140,7 +140,7 @@
       };
 
       $scope.fetchTransaction = function (transactionId) {
-        $http.get(`/transaction/${transactionId}`)
+        $http.get(`/contribution/${transactionId}`)
           .then(response => {
             $scope.transaction = response.data.transaction;
             $scope.block = null;
