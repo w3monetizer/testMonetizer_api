@@ -259,8 +259,13 @@ app.get('/consensus', function (req, res) {
 
 
 // Get the block with the provided hash
-app.get('/block/:blockHash', function (req, res) {
-
+app.get('/block/:blockHash', function (req, res) {  // localhost:3001/block/fdwafewagegagres
+  // access blockHash param in req.params
+  const blockHash = req.params.blockHash;
+  const correctBlock = solution.getBlock(blockHash);
+  res.json({
+    block: correctBlock
+  });
 });
 
 
