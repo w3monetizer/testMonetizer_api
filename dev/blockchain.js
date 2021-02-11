@@ -141,6 +141,7 @@ Blockchain.prototype.getBlock = function (blockHash) {
 
 // Get details of tx with a given Id - tx could be Contribution or Test(mine) !!
 Blockchain.prototype.getTransaction = function (transactionId) {
+  // Iterate through all blockcain
   
 };
 
