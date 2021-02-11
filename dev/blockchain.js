@@ -139,4 +139,10 @@ Blockchain.prototype.getBlock = function (blockHash) {
 };
 
 
+// Get details of a tx with a given txId
+Blockchain.prototype.getTransaction = function (transactionId) {
+  
+};
+
+
 module.exports = Blockchain;
