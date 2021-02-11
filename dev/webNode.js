@@ -291,6 +291,11 @@ app.get('/address/:address', function (req, res) {
 });
 
 
+// Get Frontend index.html file
+app.get('/solution-explorer', function (req, res) {
+  res.sendFile('./solution-explorer/index.html');
+});
+
 app.listen(port, function () {
   console.log(`Listening on port ${port}...`);
 });
