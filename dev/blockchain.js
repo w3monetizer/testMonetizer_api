@@ -21,6 +21,8 @@ function Blockchain(  // The Blockchain Constructor function
   this.socialCurrency = socialCurrency;
   this.bizCurrency = bizCurrency;
 
+  this.createdAt = Date.now();
+
   this.chain = [];  // to store  all solution blocks / validated tx/contrib
   this.pendingTransactions = [];  // to store new contributions/tx before being tested/mined
 
