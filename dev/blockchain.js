@@ -4,7 +4,7 @@ const uuid = require('uuid').v1;  // To create Unique Random IDs for tx, etc
 
 const TRUST_STRING = '0';  // '0' or null for W3 solution Monetizer Dev; '0000' for bitcoin Dev
 
-function Blockchain(repo) {
+function Blockchain(repo, branch) { // The Blockchain Constructor function !!
   this.chain = [];  // to store  all solution blocks / validated tx/contrib
   this.pendingTransactions = [];  // to store new contributions/tx before being tested/mined
 
