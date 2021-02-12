@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const uuid = require('uuid').v1;  // To create an Unique Random ID for the current node
@@ -19,6 +20,15 @@ app.use(bodyParser.urlencoded({ extended: false }));  // for parsing req.body fo
 // Get entire solution blockchain ~ /blockchain
 app.get('/solution', function (req, res) {
   res.send(solution);
+});
+
+// Save solution blockchain state to _repos json file
+app.get('/save-state', function (req, res) {
+  res.send(solution);
+  fs.writeFile('./_repos/solution.json', JSON.stringify(solution, null, 2), (err) => {
+    if (err) throw err;
+    console.log('The solution image has been saved!');
+  });
 });
  
 // Create a new contribution ~ /transaction
