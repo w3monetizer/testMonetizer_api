@@ -4,20 +4,22 @@ const uuid = require('uuid').v1;  // To create Unique Random IDs for tx, etc
 
 const TRUST_STRING = '0';  // '0' or null for W3 solution Monetizer Dev; '0000' for bitcoin Dev
 
-function Blockchain(
+function Blockchain(  // The Blockchain Constructor function
   owner = 'stefian',
   logFile = 'blog.csv',
   publicRepoUrl,
   privateRepoUrl,
   branch,
-  baseCurrency = 'ms') { // The Blockchain Constructor function
-  
+  socialCurrency = 'ms',
+  bizCurrency = 'BTC')  // millisecs, ATP, calorie, USD, BTC, etc
+{ 
   this.owner = owner;
   this.logFile = logFile;
   this.publicRepoUrl = publicRepoUrl;
   this.privateRepoUrl = privateRepoUrl;
   this.branch = branch;
-  this.baseCurrency = baseCurrency;
+  this.socialCurrency = socialCurrency;
+  this.bizCurrency = bizCurrency;
 
   this.chain = [];  // to store  all solution blocks / validated tx/contrib
   this.pendingTransactions = [];  // to store new contributions/tx before being tested/mined
