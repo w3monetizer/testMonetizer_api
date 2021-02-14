@@ -11,3 +11,4 @@ function Node(value, next, prev) {
 
 let node1 = new Node(100, 'node2', null);
 
+console.log(node1);
