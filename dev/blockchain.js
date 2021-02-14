@@ -7,10 +7,10 @@ const TRUST_STRING = '0';  // '0' or null for W3 solution Monetizer Dev; '0000' 
 function Blockchain(  // The Blockchain Constructor function
   owner = 'stefian',
   x = [
-    ['Expression Test','a', '=', '1 + 1', '=','?']
+    ['Expression Test','a', '=', '1 + 1', '=','?'],
     ['Test Scripts', 'Mocha'],
     ['Mocha', 'install cmd', '% npm install --save mocha'],
-    ['require', 'const assert = require("assert");']
+    ['require', 'const assert = require("assert");'],
     ['describe', 'Run test scripts as part of the blockchain mining'],
     ['it', 'saves a user',
 `describe('$<describe>', () => {
