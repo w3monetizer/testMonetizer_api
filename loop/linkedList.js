@@ -3,6 +3,8 @@ function LinkedList() {
   this.tail = null;
 }
 
-function Node() {
-
+function Node(value, next, prev) {
+  this.value = value;
+  this.next = next;
+  this.prev = prev;
 }
