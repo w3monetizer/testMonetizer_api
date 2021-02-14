@@ -106,9 +106,12 @@ Blockchain.prototype.hashBlock = function (previousBlockHash, currentBlockData, 
 // => continuously changes nonce value until it finds the correct hash
 // => returns to us the nonce value that creates the correct hash
 Blockchain.prototype.proofOfWork = function (previousBlockHash, currentBlockData) {
-  
   // ToDo: First Test current Block Data (commits, etc against test scripts in the project repo) 
+  // Experiment: test eval on x array out of the chain:
+  let var1 = eval(this.x[0][3]);
+  this.x[0].push(var1);
 
+  // Proof of Work - the Blockchain function
   let nonce = 0;
   let hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
   // for w3Monetizer Dev we will leave it at '0' instead of '0000' 
