@@ -8,3 +8,7 @@ function Node(value, next, prev) {
   this.next = next;
   this.prev = prev;
 }
+
+var LL = new LinkedList();
+
+console.log(LL);
