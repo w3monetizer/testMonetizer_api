@@ -12,7 +12,8 @@
     "node_2": "nodemon --watch dev -e js dev/webNode.js 3002 http://localhost:3002",
     "node_3": "nodemon --watch dev -e js dev/webNode.js 3003 http://localhost:3003",
     "node_4": "nodemon --watch dev -e js dev/webNode.js 3004 http://localhost:3004",
-    "node_5": "nodemon --watch dev -e js dev/webNode.js 3005 http://localhost:3005"
+    "node_5": "nodemon --watch dev -e js dev/webNode.js 3005 http://localhost:3005",
+    "autocommit": "nodemon --ext tsx --exec gv # Autocommit with clipboard msg on Save"
   },
   "repository": {
     "type": "git",
