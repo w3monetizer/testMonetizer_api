@@ -41,10 +41,7 @@ LinkedList.prototype.removeTail = function () {
   return val;
 }
 
-var ll = new LinkedList();
-
-ll.addToHead('one');
-ll.addToHead('two');
-ll.addToHead('three');
-
-console.log(ll.removeTail());
+// Search value in Linked List
+LinkedList.prototype.search = function (searchValue) {
+  
+}
