@@ -15,3 +15,9 @@ LinkedList.prototype.addToHead = function (value) {
   else this.tail = newNode; // a single node is both the head and tail node
   this.head = newNode;
 }
+
+var ll = new LinkedList();
+
+ll.addToHead(100);
+
+console.log(ll);
