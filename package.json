@@ -14,7 +14,7 @@
     "node_4": "nodemon --watch dev -e js dev/webNode.js 3004 http://localhost:3004",
     "node_5": "nodemon --watch dev -e js dev/webNode.js 3005 http://localhost:3005",
     "autocommit": "nodemon --ext js,tsx,json --exec gv # Autocommit with clipboard msg on Save",
-    "ll": "nodemon --watch loop cl && loop/linkedList"
+    "ll": "nodemon --watch loop loop/linkedList.js"
   },
   "repository": {
     "type": "git",
