@@ -22,3 +22,9 @@ LinkedList.prototype.addToTail = function (value) {
   else this.head = newNode;
   this.tail = newNode;
 }
+
+var myLL = new LinkedList();
+
+myLL.addToTail(10);
+
+console.log(myLL);
