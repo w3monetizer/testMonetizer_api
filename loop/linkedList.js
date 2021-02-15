@@ -51,13 +51,9 @@ LinkedList.prototype.search = function (searchValue) {
   return null;
 }
 
-var myll = new LinkedList();
+LinkedList.prototype.indexOf = function (value) {
+  
+}
 
-myll.addToHead(123);
-myll.addToHead(70);
-myll.addToHead('hello');
-myll.addToTail(19);
-myll.addToTail('world');
-myll.addToTail(20);
+var myLL = new LinkedList();
 
-console.log( myll.search(10));
