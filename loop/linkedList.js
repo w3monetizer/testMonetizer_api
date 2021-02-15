@@ -19,5 +19,6 @@ LinkedList.prototype.addToHead = function (value) {
 var ll = new LinkedList();
 
 ll.addToHead(100);
+ll.addToHead(200);
 
 console.log(ll);
