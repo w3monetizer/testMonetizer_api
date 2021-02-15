@@ -29,4 +29,6 @@ myLL.addToTail(10);
 myLL.addToTail(20);
 myLL.addToTail(30);
 
-console.log(myLL.tail.prev.prev);
+myLL.addToHead(100);
+
+console.log(myLL);
