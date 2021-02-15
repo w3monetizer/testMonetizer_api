@@ -38,4 +38,5 @@ ll.addToHead(1000);
 ll.addToHead(2000);
 ll.addToTail(3000);
 
+ll.removeHead();
 console.log(ll.removeHead());
