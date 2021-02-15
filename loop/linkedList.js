@@ -51,9 +51,24 @@ LinkedList.prototype.search = function (searchValue) {
   return null;
 }
 
+// Return all indexes of the value
 LinkedList.prototype.indexOf = function (value) {
-  
+  let indexOf = [];
+  let index = 0;
+  let currentNode = this.head;
+  while (currentNode) {
+    if (currentNode.value === value) indexOf.push(index);
+    currentNode = currentNode.next;
+    index++;
+  }
+  return indexOf;
 }
 
 var myLL = new LinkedList();
 
+myLL.addToHead(3);
+myLL.addToHead(5);
+myLL.addToHead(3);
+myLL.addToTail(8);
+
+console.log(myLL.indexOf(3));
