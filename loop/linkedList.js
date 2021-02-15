@@ -26,5 +26,7 @@ LinkedList.prototype.addToTail = function (value) {
 var myLL = new LinkedList();
 
 myLL.addToTail(10);
+myLL.addToTail(20);
+myLL.addToTail(30);
 
-console.log(myLL);
+console.log(myLL.tail.prev);
