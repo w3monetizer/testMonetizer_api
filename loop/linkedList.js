@@ -31,4 +31,4 @@ myLL.addToTail(30);
 
 myLL.addToHead(100);
 
-console.log(myLL);
+console.log(myLL.tail.prev.prev.prev);
