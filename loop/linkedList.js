@@ -60,4 +60,4 @@ myll.addToTail(19);
 myll.addToTail('world');
 myll.addToTail(20);
 
-console.log( myll.search(70));
+console.log( myll.search('world'));
