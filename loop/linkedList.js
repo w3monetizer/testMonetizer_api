@@ -40,3 +40,11 @@ LinkedList.prototype.removeTail = function () {
   else this.head = null;
   return val;
 }
+
+var ll = new LinkedList();
+
+ll.addToHead('one');
+ll.addToHead('two');
+ll.addToHead('three');
+
+console.log(ll.removeTail);
