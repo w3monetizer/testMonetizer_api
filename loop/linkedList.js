@@ -63,15 +63,3 @@ LinkedList.prototype.indexOf = function (value) {
   }
   return indexes;
 }
-
-var myLL = new LinkedList();
-
-myLL.addToTail(1);
-myLL.addToTail(5);
-myLL.addToTail(3);
-myLL.addToTail(5);
-myLL.addToTail(8);
-myLL.addToTail(7);
-myLL.addToTail(5);
-
-console.log(myLL.indexOf(5));
