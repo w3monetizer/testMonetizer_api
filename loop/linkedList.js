@@ -16,10 +16,6 @@ LinkedList.prototype.addToHead = function (value) {
   this.head = newNode;
 }
 
-var ll = new LinkedList();
-
-ll.addToHead(100);
-ll.addToHead(200);
-ll.addToHead(300);
-
-console.log(ll);
+LinkedList.prototype.addToTail = function (value) {
+  
+}
