@@ -66,9 +66,12 @@ LinkedList.prototype.indexOf = function (value) {
 
 var myLL = new LinkedList();
 
-myLL.addToHead(3);
-myLL.addToHead(5);
-myLL.addToHead(3);
+myLL.addToTail(1);
+myLL.addToTail(5);
+myLL.addToTail(3);
+myLL.addToTail(5);
 myLL.addToTail(8);
+myLL.addToTail(7);
+myLL.addToTail(5);
 
-console.log(myLL.indexOf(3));
+console.log(myLL.indexOf(5));
