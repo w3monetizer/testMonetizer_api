@@ -47,4 +47,4 @@ ll.addToHead('one');
 ll.addToHead('two');
 ll.addToHead('three');
 
-console.log(ll.removeTail);
+console.log(ll.removeTail());
