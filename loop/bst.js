@@ -48,7 +48,7 @@ bst.insert(10);
 
 // Testing contains()
 console.log(bst.contains(50));
-console.log(bst.contains(10));
+console.log(bst.contains(15));
 
 
 // Testing insert()
