@@ -34,3 +34,4 @@ bst.insert(10);
 
 // console.log(bst);
 console.log(bst.right.left.left);
+console.log(bst.left.right.left);
