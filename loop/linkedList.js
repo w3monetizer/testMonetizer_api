@@ -63,3 +63,5 @@ LinkedList.prototype.indexOf = function (value) {
   }
   return indexes;
 }
+
+module.exports = LinkedList;
