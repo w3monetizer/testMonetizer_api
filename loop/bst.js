@@ -35,6 +35,7 @@ BST.prototype.contains = function (value) {
 // In-Order version of DFT - traversing all nodes in order from least to greatest
 // the most used in practice because of the order
 BST.prototype.depthFirstTraversal = function (iteratorFunc, order) {
+  if (order === 'pre-order') iteratorFunc(this.value);
   if (this.left) this.left.depthFirstTraversal(iteratorFunc, order);  // recursive case
   if (order === 'in-order') iteratorFunc(this.value);
   if (this.right) this.right.depthFirstTraversal(iteratorFunc, order);  // recursive case
