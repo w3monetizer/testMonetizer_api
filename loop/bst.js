@@ -75,8 +75,8 @@ bst.breadthFirstTraversal(log);
 // bst.depthFirstTraversal(log, 'post-order');
 
 // Defining the iterator function - log()
-function log(value) {
-  console.log(value);
+function log(node) {
+  console.log(node.value);
 }
 
 
