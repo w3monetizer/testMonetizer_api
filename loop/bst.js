@@ -19,8 +19,16 @@ BST.prototype.insert = function (value) {
 
 // BST contains() method - returns true or false
 BST.prototype.contains = function (value) {
-
-}
+  if (value === this.value) return true;
+  else if (value < this.value) {
+    if (!this.left) return false;
+    else return this.left.contains(value);  // recursive case
+  } 
+  else if (value > this.value) {
+    if (!this.right) return false;
+    else return this.right.contains(value);  // recursive case
+  }
+};
 
 // BST Testing
 let bst = new BST(50);
