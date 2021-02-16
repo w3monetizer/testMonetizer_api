@@ -5,7 +5,7 @@ function BST(value) {
   this.right = null;
 }
 
-// BST insert method
+// BST insert() method
 BST.prototype.insert = function (value) {
   if (value <= this.value) {
     if (!this.left) this.left = new BST(value);
@@ -16,6 +16,11 @@ BST.prototype.insert = function (value) {
     else this.right.insert(value);  // recursive case
   }
 };
+
+// BST contains() method - returns true or false
+BST.prototype.contains = function (value) {
+
+}
 
 // BST Testing
 let bst = new BST(50);
