@@ -42,6 +42,11 @@ BST.prototype.depthFirstTraversal = function (iteratorFunc, order) {
   if (order === 'post-order') iteratorFunc(this.value);
 };
 
+// BST breadthFirstTraversal(func) method
+BST.prototype.breadthFirstTraversal = function (iteratorFunc) {
+  
+}
+
 // BST Testing
 let bst = new BST(50);
 
