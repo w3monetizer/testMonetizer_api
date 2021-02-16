@@ -45,7 +45,13 @@ bst.insert(85);
 bst.insert(105);
 bst.insert(10);
 
+
+// Testing contains()
+console.log(bst.contains(50));
+
+
+// Testing insert()
 // console.log(bst);
-console.log(bst.right.left.left);
-console.log(bst.left.right.left);
-console.log(bst.right.right);
+// console.log(bst.right.left.left);
+// console.log(bst.left.right.left);
+// console.log(bst.right.right);
