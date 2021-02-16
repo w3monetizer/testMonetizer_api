@@ -58,7 +58,7 @@ bst.insert(105);
 bst.insert(10);
 
 // Testing depthFirstTraversal()
-bst.depthFirstTraversal(log, 'pre-order');
+bst.depthFirstTraversal(log, 'post-order');
 
 // Defining the iterator function - log()
 function log(value) {
