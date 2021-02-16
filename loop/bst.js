@@ -44,9 +44,9 @@ BST.prototype.depthFirstTraversal = function (iteratorFunc, order) {
 
 // BST breadthFirstTraversal(func) method
 BST.prototype.breadthFirstTraversal = function (iteratorFunc) {
-  var queue = [this]; // First In First Out Queue; this refs to the root node
-  while (queue.lenght) {
-    var treeNode = queue.shift(); // take the root out of the queue
+  const queue = [this]; // First In First Out Queue; this refs to the root node
+  while (queue.length) {
+    let treeNode = queue.shift(); // take the root out of the queue
     iteratorFunc(treeNode);
     if (treeNode.left) queue.push(treeNode.left);
     if (treeNode.right) queue.push(treeNode.right);
