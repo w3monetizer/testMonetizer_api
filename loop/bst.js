@@ -30,7 +30,7 @@ BST.prototype.contains = function (value) {
   }
 };
 
-// BST depthFirstTraversl(func()) method - runs func() through all tree
+// BST depthFirstTraversl(func) method - runs func() through all tree
 // running on all branches down to bottom before going to next branch
 // In-Order version of DFT - traversing all nodes in order from least to greatest
 // the most used in practice because of the order
@@ -54,6 +54,14 @@ bst.insert(35);
 bst.insert(85);
 bst.insert(105);
 bst.insert(10);
+
+// Testing depthFirstTraversal()
+bst.depthFirstTraversal(log);
+
+// Defining the iterator function - log()
+function log(value) {
+  console.log(value);
+}
 
 
 // Testing contains()
