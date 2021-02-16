@@ -39,6 +39,7 @@ BST.prototype.depthFirstTraversal = function (iteratorFunc, order) {
   if (this.left) this.left.depthFirstTraversal(iteratorFunc, order);  // recursive case
   if (order === 'in-order') iteratorFunc(this.value);
   if (this.right) this.right.depthFirstTraversal(iteratorFunc, order);  // recursive case
+  if (order === 'post-order') iteratorFunc(this.value);
 };
 
 // BST Testing
