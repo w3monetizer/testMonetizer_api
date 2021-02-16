@@ -1,5 +1,5 @@
 const assert = require('assert');
-const User = require('../src/user');
+const User = require('../src-mongo/user');
 
 describe('Validating records', () => {
   // Create records with Mongoose - not saved in DB //
