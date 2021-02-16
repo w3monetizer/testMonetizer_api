@@ -17,7 +17,7 @@ BST.prototype.insert = function (value) {
   }
 };
 
-// BST contains() method - returns true or false
+// BST contains(value) method - returns true or false
 BST.prototype.contains = function (value) {
   if (value === this.value) return true;
   else if (value < this.value) {
@@ -28,6 +28,11 @@ BST.prototype.contains = function (value) {
     if (!this.right) return false;
     else return this.right.contains(value);  // recursive case
   }
+};
+
+// BST depthFirstTraversl(func()) method - runs func() through all tree
+BST.prototype.depthFirstTraversal = function (iteratorFunc) {
+  
 };
 
 // BST Testing
