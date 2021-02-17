@@ -24,7 +24,9 @@ HashTable.prototype.hash = function (key) {
 
 // Viz and Test HashTable
 let myHT = new HashTable(30);
-console.log(myHT);
+// console.log(myHT);
+
+console.log( myHT.hash('Becca'));
 
 // Examples of 'string'.charCodeAt() & modulus %
 // console.log('hello world'.charCodeAt(1));  // 101 - Unicode for 'e'
