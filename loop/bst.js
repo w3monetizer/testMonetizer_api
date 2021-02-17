@@ -103,7 +103,7 @@ bst.insert(105);
 bst.insert(10);
 
 // Testing delete
-bst.delete(85);
+bst.delete(10);
 bst.depthFirstTraversal(log, 'in-order');
 
 // Testing getMaxVal()
