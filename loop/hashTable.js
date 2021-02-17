@@ -61,6 +61,11 @@ HashTable.prototype.get = function (key) {
   }
 }
 
+// Retrieve All method - returns an Array of all HashNodes in the HashTable
+HashTable.prototype.retrieveAll = function () {
+  
+}
+
 
 // Viz and Test HashTable
 let myHT = new HashTable(30);
@@ -74,6 +79,7 @@ myHT.insert('Dean', 'deanmachine@gmail.com');
 myHT.insert('Megan', 'megansmith@gmail.com');
 myHT.insert('Dane', 'dane1010@outlook.com');
 
+// Testing get() method
 console.log( myHT.get('Dean')); // deanmachine@gmail.com
 console.log( myHT.get('Dane')); // dane1010@outlook.com
 
