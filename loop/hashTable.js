@@ -22,11 +22,25 @@ HashTable.prototype.hash = function (key) {
   return bucket;
 }
 
+// Insert() method - take the Key and value, create a node, place node in the correct bucket
+HashTable.prototype.insert = function (key, value) {
+  const index = this.hash(key);
+  if (!this.buckets[index]) this.buckets[index] = new HashNode(key, value);
+  else {
+    let currentNode = this.buckets[index];
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+    currentNode.next = new HashNode(key, value);
+  }
+}
+
+
 // Viz and Test HashTable
 let myHT = new HashTable(30);
 // console.log(myHT);
 
-console.log( myHT.hash('Becca')); // 12 - a number between 0 and numBuckets-1
+// console.log( myHT.hash('Becca')); // 12 - a number between 0 and numBuckets-1
 
 // Examples of 'string'.charCodeAt() & modulus %
 // console.log('hello world'.charCodeAt(1));  // 101 - Unicode for 'e'
