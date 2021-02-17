@@ -40,7 +40,7 @@ HashTable.prototype.insert = function (key, value) {
 let myHT = new HashTable(30);
 // console.log(myHT);
 
-// Testing insert
+// Testing insert()
 myHT.insert('Dean', 'dean@gmail.com');
 myHT.insert('Megan', 'megan@gmail.com');
 myHT.insert('Dane', 'dane@gmail.com');  // Collision because hash('Dean') = hash('Dane')
