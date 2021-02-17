@@ -16,6 +16,8 @@ function HashNode(key, value, next) {
 let myHT = new HashTable(30);
 console.log(myHT);
 
-// examples of 'string'.charCodeAt()
-console.log('hello world'.charCodeAt(1));  // 101 - Unicode for 'e'
-console.log('hello world'.charCodeAt(4));  // 111 - Unicode for 'o'
+// Examples of 'string'.charCodeAt()
+// console.log('hello world'.charCodeAt(1));  // 101 - Unicode for 'e'
+// console.log('hello world'.charCodeAt(4));  // 111 - Unicode for 'o'
+
+console.log(100 % 30);
