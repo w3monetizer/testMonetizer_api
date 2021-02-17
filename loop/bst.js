@@ -82,10 +82,15 @@ bst.insert(10);
 // Testing depthFirstTraversal()
 bst.depthFirstTraversal(log, 'in-order');
 
-// Defining the iterator function - log()
-function log(node) {
-  console.log(node.value);
+// Defining the iterator function - log() - for depth First
+function log(value) {
+  console.log(value);
 }
+
+// Defining the iterator function - log() - for breadth First
+// function log(node) {
+//   console.log(node.value);
+// }
 
 
 // Testing contains()
