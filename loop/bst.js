@@ -54,7 +54,11 @@ BST.prototype.breadthFirstTraversal = function (iteratorFunc) {
 }
 
 BST.prototype.getMinVal = function () {
-  
+  let values = function (val) {
+    return values.push(val);
+  }
+  this.depthFirstTraversal(values, 'in-order');
+  return values[0];
 }
 
 BST.prototype.getMaxVal = function () {
@@ -76,11 +80,15 @@ bst.insert(85);
 bst.insert(105);
 bst.insert(10);
 
+
+// Testing getMinVal()
+console.log( bst.getMinVal());
+
 // Testing breadthFirstTraversal()
 // bst.breadthFirstTraversal(log);
 
 // Testing depthFirstTraversal()
-bst.depthFirstTraversal(log, 'in-order');
+// bst.depthFirstTraversal(log, 'in-order');
 
 // Defining the iterator function - log() - for depth First
 function log(value) {
