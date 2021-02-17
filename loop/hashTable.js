@@ -80,8 +80,8 @@ myHT.insert('Megan', 'megansmith@gmail.com');
 myHT.insert('Dane', 'dane1010@outlook.com');
 
 // Testing get() method
-console.log( myHT.get('Dean')); // deanmachine@gmail.com
-console.log( myHT.get('Dane')); // dane1010@outlook.com
+// console.log( myHT.get('Dean')); // deanmachine@gmail.com
+// console.log( myHT.get('Dane')); // dane1010@outlook.com
 
 // console.log(myHT.buckets);
 
