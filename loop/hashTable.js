@@ -86,6 +86,11 @@ myHT.insert('Dane', 'dane@gmail.com');  // Collision because hash('Dean') = hash
 myHT.insert('Dean', 'deanmachine@gmail.com');
 myHT.insert('Megan', 'megansmith@gmail.com');
 myHT.insert('Dane', 'dane1010@outlook.com');
+myHT.insert('Joe', 'joey@fabebook.com');
+myHT.insert('Samantha', 'sammy@twitter.com');
+
+// Test retrieveAll();
+console.log( myHT.retrieveAll());
 
 // Testing get() method
 // console.log( myHT.get('Dean')); // deanmachine@gmail.com
