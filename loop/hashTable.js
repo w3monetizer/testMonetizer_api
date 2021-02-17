@@ -43,6 +43,7 @@ let myHT = new HashTable(30);
 // Testing insert
 myHT.insert('Dean', 'dean@gmail.com');
 myHT.insert('Megan', 'megan@gmail.com');
+myHT.insert('Dane', 'dane@gmail.com');  // Collision because hash('Dean') = hash('Dane')
 console.log(myHT.buckets);
 
 // console.log( myHT.hash('Becca')); // 12 - a number between 0 and numBuckets-1
