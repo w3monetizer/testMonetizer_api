@@ -68,7 +68,7 @@ BST.prototype.getMaxVal = function () {
     return values.push(val);
   }
   this.depthFirstTraversal(valArray, 'in-order');
-  return values[values.length];
+  return values[values.length - 1];
 }
 
 // BST Testing
