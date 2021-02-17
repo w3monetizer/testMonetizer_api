@@ -11,6 +11,8 @@ function HashNode(key, value, next) {
   this.next = next || null;
 }
 
+console.log('hello world'.charCodeAt(1));  // 101 - Unicode for 'e'
+
 // Viz and Test HashTable
 let myHT = new HashTable(30);
 console.log(myHT);
