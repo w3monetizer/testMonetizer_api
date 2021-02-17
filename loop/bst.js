@@ -54,10 +54,11 @@ BST.prototype.breadthFirstTraversal = function (iteratorFunc) {
 }
 
 BST.prototype.getMinVal = function () {
-  let values = function (val) {
+  let values = [];
+  let valArray = function (val) {
     return values.push(val);
   }
-  this.depthFirstTraversal(values, 'in-order');
+  this.depthFirstTraversal(valArray, 'in-order');
   return values[0];
 }
 
