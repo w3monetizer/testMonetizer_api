@@ -53,6 +53,14 @@ BST.prototype.breadthFirstTraversal = function (iteratorFunc) {
   }
 }
 
+BST.prototype.getMinVal = function () {
+  
+}
+
+BST.prototype.getMaxVal = function () {
+  
+}
+
 // BST Testing
 let bst = new BST(50);
 
