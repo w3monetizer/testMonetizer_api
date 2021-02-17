@@ -46,6 +46,21 @@ HashTable.prototype.insert = function (key, value) {
   }
 }
 
+// Get() method
+HashTable.prototype.get = function (key) {
+  const index = this.hash(key);
+  if (!this.buckets[index]) return null;
+  else {
+    // Loop through the chain of nodes in the bucket to get the correct value
+    let currentNode = this.buckets[index];
+    while (currentNode) {
+      if (currentNode.key === key) return currentNode.value;
+      currentNode = currentNode.next;
+    }
+    return null;
+  }
+}
+
 
 // Viz and Test HashTable
 let myHT = new HashTable(30);
