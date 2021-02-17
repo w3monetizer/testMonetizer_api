@@ -63,21 +63,48 @@ BST.prototype.getMaxVal = function () {
   else return this.value;
 }
 
+BST.prototype.delete = function (value) {
+    if (value <= this.value) {
+        if (!this.left) {
+            console.error('The value does not exist in the tree');
+        } else {
+            if (value === this.left.value) {
+                this.left = null;
+            } else {
+                this.left.delete(value);
+            }
+        }
+    } else if (value > this.value) {
+        if (!this.right) {
+            console.error('The value does not exist in the tree');
+        } else {
+            if (value === this.right.value) {
+                this.right = null;
+            } else {
+                this.right.delete(value);
+            }
+        }
+    }
+}
+
 // BST Testing
-// let bst = new BST(50);
+let bst = new BST(50);
 
-// bst.insert(30);
-// bst.insert(70);
-// bst.insert(100);
-// bst.insert(60);
-// bst.insert(59);
-// bst.insert(20);
-// bst.insert(45);
-// bst.insert(35);
-// bst.insert(85);
-// bst.insert(105);
-// bst.insert(10);
+bst.insert(30);
+bst.insert(70);
+bst.insert(100);
+bst.insert(60);
+bst.insert(59);
+bst.insert(20);
+bst.insert(45);
+bst.insert(35);
+bst.insert(85);
+bst.insert(105);
+bst.insert(10);
 
+// Testing delete
+bst.delete(85);
+bst.depthFirstTraversal(log, 'in-order');
 
 // Testing getMaxVal()
 // console.log( bst.getMaxVal());
