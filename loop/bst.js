@@ -77,10 +77,10 @@ bst.insert(105);
 bst.insert(10);
 
 // Testing breadthFirstTraversal()
-bst.breadthFirstTraversal(log);
+// bst.breadthFirstTraversal(log);
 
 // Testing depthFirstTraversal()
-// bst.depthFirstTraversal(log, 'post-order');
+bst.depthFirstTraversal(log, 'in-order');
 
 // Defining the iterator function - log()
 function log(node) {
