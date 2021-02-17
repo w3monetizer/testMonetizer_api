@@ -74,7 +74,9 @@ myHT.insert('Dean', 'deanmachine@gmail.com');
 myHT.insert('Megan', 'megansmith@gmail.com');
 myHT.insert('Dane', 'dane1010@outlook.com');
 
-console.log(myHT.buckets);
+console.log( myHT.get('Dean')); // deanmachine@gmail.com
+
+// console.log(myHT.buckets);
 
 // console.log( myHT.hash('Becca')); // 12 - a number between 0 and numBuckets-1
 
