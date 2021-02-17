@@ -26,7 +26,7 @@ HashTable.prototype.hash = function (key) {
 let myHT = new HashTable(30);
 // console.log(myHT);
 
-console.log( myHT.hash('Becca'));
+console.log( myHT.hash('Becca')); // 12 - a number between 0 and numBuckets-1
 
 // Examples of 'string'.charCodeAt() & modulus %
 // console.log('hello world'.charCodeAt(1));  // 101 - Unicode for 'e'
