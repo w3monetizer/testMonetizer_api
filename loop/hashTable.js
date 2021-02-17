@@ -63,7 +63,15 @@ HashTable.prototype.get = function (key) {
 
 // Retrieve All method - returns an Array of all HashNodes in the HashTable
 HashTable.prototype.retrieveAll = function () {
-  
+  const allNodes = [];
+  for (let i = 0; i < this.numBuckets; i++) {
+    let currentNode = this.buckets[i];
+    while (currentNode) {
+      allNodes.push(currentNode);
+      currentNode = currentNode.next;
+    }
+  }
+  return allNodes;
 }
 
 
