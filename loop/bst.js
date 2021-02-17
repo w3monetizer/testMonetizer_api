@@ -63,7 +63,12 @@ BST.prototype.getMinVal = function () {
 }
 
 BST.prototype.getMaxVal = function () {
-  
+  let values = [];
+  let valArray = function (val) {
+    return values.push(val);
+  }
+  this.depthFirstTraversal(valArray, 'in-order');
+  return values[values.length];
 }
 
 // BST Testing
@@ -81,6 +86,9 @@ bst.insert(85);
 bst.insert(105);
 bst.insert(10);
 
+
+// Testing getMaxVal()
+console.log( bst.getMaxVal());
 
 // Testing getMinVal()
 console.log( bst.getMinVal());
