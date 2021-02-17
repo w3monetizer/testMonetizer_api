@@ -23,12 +23,23 @@ HashTable.prototype.hash = function (key) {
 }
 
 // Insert() method - take the Key and value, create a node, place node in the correct bucket
+// Also to update value for a key
 HashTable.prototype.insert = function (key, value) {
   const index = this.hash(key);
-  if (!this.buckets[index]) this.buckets[index] = new HashNode(key, value);
+  if (!this.buckets[index]) {
+    this.buckets[index] = new HashNode(key, value);
+  }
+  else if (this.buckets[index].key === key) {  // check the first node in the bucket
+    this.buckets[index].value = value;  // update the value of the first node in the bucket
+  }
   else {
     let currentNode = this.buckets[index];
-    while (currentNode.next) {
+    while (currentNode.next) {  // use .next to check up to the last node in chain
+      if (currentNode.next.key === key) {
+        // the key already exist on the hash node linked list
+        currentNode.next.value = value; // update value for the key
+        return;
+      }
       currentNode = currentNode.next;
     }
     currentNode.next = new HashNode(key, value);
